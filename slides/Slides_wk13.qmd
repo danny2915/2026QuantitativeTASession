@@ -1,0 +1,9 @@
+---
+title: "Week 13 Slides (0519)"
+---
+
+```{=html}
+<iframe src="Slides_wk13.pdf" width="100%" height="800" style="border:1px solid #ddd;"></iframe>
+[Open in new tab](Slides_wk13.pdf){target=_blank rel="noopener"}
+ ·
+[Download PDF](Slides_wk13.pdf)

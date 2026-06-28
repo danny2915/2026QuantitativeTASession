@@ -1,0 +1,114 @@
+<!-- assets/bgm.html -->
+
+<style>
+  #bgm-toggle {
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
+    /* Make absolutely sure nothing blocks clicks or overlaps it */
+    z-index: 2147483647;          /* max-ish */
+    pointer-events: auto;
+
+    padding: .45rem .7rem;
+    border-radius: .5rem;
+    border: 1px solid rgba(0,0,0,.15);
+    background: #fff;
+    color: #111;
+    font: 500 14px/1.1 system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif;
+    box-shadow: 0 2px 8px rgba(0,0,0,.15);
+    cursor: pointer;
+  }
+  html[data-bs-theme="dark"] #bgm-toggle {
+    background: #1e1e1e;
+    color: #e6e6e6;
+    border-color: rgba(255,255,255,.2);
+  }
+</style>
+
+<audio id="bgm" loop muted autoplay preload="metadata"></audio>
+<button id="bgm-toggle" type="button" aria-pressed="false">🔈 Play BGM</button>
+
+<script>
+(function () {
+  // Guard: avoid duplicate init if included twice
+  if (window.__bgmInstalled) return;
+  window.__bgmInstalled = true;
+
+  const STORAGE_KEY = 'bgm-state-v1';
+  const audio = document.getElementById('bgm');
+  const btn   = document.getElementById('bgm-toggle');
+
+  // ✅ Absolute URL so it works on every page after publish
+  const AUDIO_ABS = 'https://danny2915.github.io/2026MetricTASession/assets/audio/GHOST_TRICK.mp3';
+  audio.src = AUDIO_ABS;
+
+  // Restore saved state
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch {}
+  if (typeof saved.volume === 'number') audio.volume = saved.volume;
+  if (saved.muted === true) audio.muted = true;
+
+  function setLabel() {
+    const playing = !audio.paused && !audio.muted;
+    btn.textContent = playing ? '🔇 Mute BGM' : '🔈 Play BGM';
+    btn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+  }
+
+  function persist() {
+    const state = {
+      time: audio.currentTime || 0,
+      muted: audio.muted,
+      volume: audio.volume,
+      playing: !audio.paused && !audio.muted
+    };
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch {}
+  }
+
+  async function restoreAndMaybePlay() {
+    if (typeof saved.time === 'number' && saved.time > 0 && saved.time < (audio.duration || Infinity)) {
+      try { audio.currentTime = saved.time; } catch {}
+    }
+    if (saved.playing) {
+      audio.muted = false;
+      try { await audio.play(); } catch {}
+    }
+    setLabel();
+  }
+
+  audio.addEventListener('loadedmetadata', restoreAndMaybePlay, { once: true });
+
+  // Single, reliable toggle (no audio.load() here)
+  btn.addEventListener('click', async (ev) => {
+    ev.preventDefault();
+    ev.stopPropagation();
+
+    const isPlaying = !audio.paused && !audio.muted;
+
+    if (isPlaying) {
+      audio.pause();
+      audio.muted = true;
+    } else {
+      audio.muted = false;
+      try { await audio.play(); } catch (e) {
+        // If play fails (shouldn’t after a click), keep muted state
+        console.warn('BGM play failed:', e);
+        audio.muted = true;
+      }
+    }
+    persist();
+    setLabel();
+  }, { passive: false, once: false });
+
+  // Keep label in sync
+  ['play','pause','volumechange','emptied','stalled','suspend','ratechange'].forEach(ev => {
+    audio.addEventListener(ev, setLabel);
+  });
+
+  // Save while playing and on navigation
+  const saver = setInterval(() => { if (!audio.paused) persist(); }, 2000);
+  window.addEventListener('beforeunload', () => { clearInterval(saver); persist(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) persist(); });
+
+  setLabel();
+})();
+</script>

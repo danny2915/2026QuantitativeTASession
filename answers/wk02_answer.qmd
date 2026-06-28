@@ -1,0 +1,94 @@
+---
+title: "Week 2 Answers (0303)"
+---
+
+## Project
+
+1. Remember to open the project you create last week. 
+
+2. Create a new script for today's exercise and save in the script folder.
+
+## Chou Kaguya-hime! (超時空輝耀姬！)
+
+Kaguya is a new liver in Tsukuyomi. Her roommate, Iroha, also serves as her manager. To improve Kaguya’s streaming performance, Iroha records data from each stream, including:
+
+   - `date`: The date of the stream.
+   - `content`: The type of content Kaguya did during the stream.
+   - `paired_with_iroha`: Sometimes Iroha joins Kaguya’s stream. If Iroha appeared in the stream
+   on that date, record `Yes`; otherwise, record `No`.
+   - `hours`: The duration of the stream (in hours).
+   - `donation`: The total amount of donations Kaguya received.
+  
+Tsukuyomi takes 30% of the donations as a commission. Iroha wants to know which type of content has the highest earnings per hour when Kaguya streams alone.
+
+Follow the instructions below to help Iroha find the answer:
+
+0. Use the pipe operator `%>%` appropriately in the steps below and download the dataset `kaguya.csv`. 
+[(right click here)](kaguya.csv){target=_blank rel="noopener"} Then install and call the package `tidyverse`.
+
+1. Read `kaguya.csv` and save it as `kaguya_raw`.
+
+2. Without modifying `kaguya_raw`, create a new dataframe called `kaguya_solo` by filtering the data to keep only the streams where Kaguya streamed alone (i.e., not paired with Iroha).
+
+3. Add a new column `earning` to `kaguya_solo`, defined as 70% of `donation`.
+
+4. Add a new column `earning_per_hour` to `kaguya_solo`, calculated as `earning / hours`.
+
+5. Keep only the columns `date`, `content`, `earning_per_hour` in `kaguya_solo`.
+
+6. Arrange the rows of `kaguya_solo` in descending order of `earning_per_hour`.
+
+7. Print `kaguya_solo`. Which date's stream has the highest earnings per hour?
+
+8. Create a new dataframe `kaguya_solo_sum` that summarizes the average `earning_per_hour` for each `content` category, and arranges it in the descending order of average `earning_per_hour`. Which type of `content` has the highest average earnings per hour?
+
+``` r
+library(tidyverse)
+
+kaguya_raw <- read.csv("data/kaguya.csv")
+
+kaguya_solo <- kaguya_raw %>% 
+  filter(paired_with_iroha == "No") %>%
+  mutate(earning = donation * 0.7) %>% 
+  mutate(earning_per_hour = earning / hours) %>%
+  select(date, content, earning_per_hour) %>%
+  arrange(desc(earning_per_hour))
+
+print(kaguya_solo[1:5, ])
+
+kaguya_solo_sum <- kaguya_solo %>% 
+  group_by(content) %>%
+  summarise(avg_earning_per_hour = mean(earning_per_hour)) %>%
+  arrange(desc(avg_earning_per_hour))
+
+print(kaguya_solo_sum)
+```
+
+```{r}
+#| echo: false      
+
+library(tidyverse)
+library(here)
+
+kaguya_raw <- read.csv(here("data", "kaguya.csv"))
+
+kaguya_solo <- kaguya_raw %>% 
+  filter(paired_with_iroha == "No") %>%
+  mutate(earning = donation * 0.7) %>% 
+  mutate(earning_per_hour = earning / hours) %>%
+  select(date, content, earning_per_hour) %>%
+  arrange(desc(earning_per_hour))
+
+print(kaguya_solo[1:5, ])
+
+kaguya_solo_sum <- kaguya_solo %>% 
+  group_by(content) %>%
+  summarise(avg_earning_per_hour = mean(earning_per_hour)) %>%
+  arrange(desc(avg_earning_per_hour))
+
+print(kaguya_solo_sum)
+```
+
+![](kaguya.gif){width="960" fig-align="center" fig-alt="Animated welcome"}
+
+

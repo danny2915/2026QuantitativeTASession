@@ -1,0 +1,7 @@
+---
+title: "Week 1 Example R Code (0224)"
+---
+
+Right click to download:
+
+- [wk01_example_code.R](wk01_example_code.R)

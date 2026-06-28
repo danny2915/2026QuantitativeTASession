@@ -1,0 +1,9 @@
+---
+title: "Quiz 6"
+---
+
+```{=html}
+<iframe src="Quiz_6.pdf" width="100%" height="800" style="border:1px solid #ddd;"></iframe>
+[Open in new tab](Quiz_6.pdf){target=_blank rel="noopener"}
+ ·
+[Download PDF](Quiz_6.pdf)

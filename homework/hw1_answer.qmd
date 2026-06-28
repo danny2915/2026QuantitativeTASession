@@ -1,0 +1,520 @@
+---
+title: 'Homework 1 Answers'
+fig-cap: false
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+-   If you find any typos or errors, please feel free to contact me via
+    email at r13323002\@ntu.edu.tw. I would appreciate it and will
+    correct the solution to prevent any misunderstandings.
+
+-   For some R commands marked with ‘OPTIONAL,’ you don’t need to learn
+    them. You will be completely fine on the computer quiz even if you
+    choose to ignore them.
+
+-   If you’re having trouble understanding the code, don’t hesitate to
+    ask me for help. I’ll do my best to assist you during office hours
+    or after the TA session.
+
+
+## Textbook Exercises
+
+### Exercise 2.6
+
+a.  
+$$
+E(Y)=0\cdot 0.12 + 1\cdot 0.88 = 0.88
+$$
+
+b.  
+$$
+\Pr(Y=0)=1-\Pr(Y=1)
+       =1-E(Y)
+       =1-0.88=0.12
+$$
+
+c. We first compute the conditional probabilities respectively:
+
+$$
+\Pr(Y=0\mid X=0)=\frac{\Pr(X=0,Y=0)}{\Pr(X=0)}
+=\frac{0.078}{0.751}=\frac{78}{751}
+$$
+
+$$
+\Pr(Y=1\mid X=0)=\frac{\Pr(X=0,Y=1)}{\Pr(X=0)}
+=\frac{0.673}{0.751}=\frac{673}{751}
+$$
+
+$$
+\Pr(Y=0\mid X=1)=\frac{\Pr(X=1,Y=0)}{\Pr(X=1)}
+=\frac{0.042}{0.249}=\frac{14}{83}
+$$
+
+$$
+\Pr(Y=1\mid X=1)=\frac{\Pr(X=1,Y=1)}{\Pr(X=1)}
+=\frac{0.207}{0.249}=\frac{69}{83}
+$$
+
+and the conditional expectations are:
+
+$$
+E(Y\mid X=1)=0\cdot\frac{14}{83}+1\cdot\frac{69}{83}
+=\frac{69}{83}\approx 0.8313
+$$
+
+$$
+E(Y\mid X=0)=0\cdot\frac{78}{751}+1\cdot\frac{673}{751}
+=\frac{673}{751}\approx 0.8961
+$$
+
+d. Unemployment rate for college graduates:
+
+$$
+\Pr(Y=0\mid X=1)=1-E(Y\mid X=1)=1-\frac{69}{83}=\frac{14}{83}\approx 0.1687
+$$
+
+and for non-college graduates:
+
+$$
+\Pr(Y=0\mid X=0)=1-E(Y\mid X=0)=1-\frac{673}{751}=\frac{78}{751}\approx 0.1039
+$$
+
+e. Probability that a randomly selected unemployed worker is a college graduate:
+
+$$
+\Pr(X=1\mid Y=0)=\frac{\Pr(X=1,Y=0)}{\Pr(Y=0)}=\frac{0.042}{0.12}=0.35
+$$
+
+Probability that a randomly selected unemployed worker is a non-college graduate:
+
+$$
+\Pr(X=0\mid Y=0)=\frac{\Pr(X=0,Y=0)}{\Pr(Y=0)}=\frac{0.078}{0.12}=0.65
+$$
+
+f. If $X$ is independent of $Y$, then $P(X\mid Y)=P(X)$.
+
+Because $\Pr(X=0\mid Y=0)=\frac{78}{751}\neq \Pr(X=0)=0.751$, educational achievement and employment status are not independent.
+
+### Exercise 2.8
+
+We know that $E(Y)=4$ and $\mathrm{Var}(Y)=\frac{1}{9}$, hence the expectation and variance of $Z$ can be computed respectively:
+
+$$
+E(Z)=E[3(Y-4)]=3E(Y-4)=3E(Y)-12=3\cdot 4-12=0
+$$
+
+$$
+\mathrm{Var}(Z)=\mathrm{Var}[3(Y-4)]=3^2\cdot \mathrm{Var}(Y)=9\cdot\frac{1}{9}=1
+$$
+
+### Exercise 2.14
+
+By CLT, we have
+
+$$
+\bar{Y}\overset{A}{\sim}N\!\left(\mu_Y,\frac{\sigma_Y^2}{n}\right)
+$$
+
+By the properties of normal distribution, we have
+
+$$
+\frac{\bar{Y}-\mu_Y}{\sqrt{\sigma_Y^2/n}}\overset{A}{\sim}N(0,1)
+$$
+
+a.  
+$$
+\Pr(\bar{Y}\le 51)
+=\Pr\left(\frac{\bar{Y}-50}{\sqrt{21/50}}\le \frac{51-50}{\sqrt{21/50}}\right)
+\approx 0.9386
+$$
+
+b.  
+$$
+\Pr(\bar{Y}>49)
+=\Pr\left(\frac{\bar{Y}-50}{\sqrt{21/150}}>\frac{49-50}{\sqrt{21/150}}\right)
+\approx 0.9962
+$$
+
+c.  
+$$
+\Pr(50.5\le \bar{Y}\le 51)
+=\Pr\left(\frac{50.5-50}{\sqrt{21/45}}\le \frac{\bar{Y}-50}{\sqrt{21/45}}\le \frac{51-50}{\sqrt{21/45}}\right)
+\approx 0.1605
+$$
+
+### Exercise 2.25
+
+a.  
+$$
+\sum_{i=1}^n a x_i = a x_1 + a x_2 + \cdots + a x_n = a\sum_{i=1}^n x_i
+$$
+
+b.  
+$$
+\sum_{i=1}^n (x_i+y_i)
+=(x_1+y_1)+(x_2+y_2)+\cdots+(x_n+y_n)
+=\sum_{i=1}^n x_i + \sum_{i=1}^n y_i
+$$
+
+c.  
+$$
+\sum_{i=1}^n a=\underbrace{a+a+\cdots+a}_{n\ \text{times}}=n\cdot a
+$$
+
+d.  
+$$
+\sum_{i=1}^n (a+bx_i+cy_i)^2
+=\sum_{i=1}^n\left(a^2+b^2x_i^2+c^2y_i^2+2abx_i+2acy_i+2bcx_i y_i\right)
+$$
+
+$$
+=na^2+b^2\sum_{i=1}^n x_i^2+c^2\sum_{i=1}^n y_i^2
++2ab\sum_{i=1}^n x_i+2ac\sum_{i=1}^n y_i+2bc\sum_{i=1}^n x_i y_i
+$$
+
+
+### Exercise 3.2
+
+a.  
+$$
+\hat p=\frac{1}{n}\sum_{i=1}^n Y_i=\bar Y
+$$
+
+b.  
+$$
+E(\hat p)=E(\bar Y)=E\!\left(\frac{1}{n}\sum_{i=1}^n Y_i\right)
+=\frac{1}{n}\sum_{i=1}^n E(Y_i)
+=\frac{1}{n}\cdot np=p
+$$
+
+c.  
+$$
+\mathrm{Var}(\hat p)=\mathrm{Var}(\bar Y)
+=\mathrm{Var}\!\left(\frac{1}{n}\sum_{i=1}^n Y_i\right)
+=\frac{1}{n^2}\mathrm{Var}\!\left(\sum_{i=1}^n Y_i\right)
+$$
+
+$$
+=\frac{1}{n^2}\bigl[n\cdot \mathrm{Var}(Y_i)\bigr]
+=\frac{1}{n^2}\cdot np(1-p)=\frac{p(1-p)}{n}
+$$
+
+### Exercise 3.3
+
+a.  
+$$
+\hat p=\frac{270}{500}=0.54
+$$
+
+b. The estimated variance of $\hat p$ is:
+$$
+\mathrm{Var}(\hat p)=\frac{\hat p(1-\hat p)}{n}
+=\frac{0.54(1-0.54)}{500}=0.0004968
+$$
+
+and the standard error is:
+$$
+SE(\hat p)=\sqrt{\mathrm{Var}(\hat p)}\approx 0.0223
+$$
+
+c. First derive the pivotal quantity:
+$$
+z=\frac{\hat p-p_0}{\sqrt{p_0(1-p_0)/n}}
+\;\overset{A}{\sim}\; N(0,1)
+$$
+
+then, calculate the $z$-statistic:
+$$
+z^*=\frac{0.54-0.5}{\sqrt{0.5(1-0.5)/500}}\approx 1.7889
+$$
+
+The $p$-value is:
+$$
+p\text{-value}=2\cdot \Phi(-z^*)\approx 2\cdot \Phi(-1.7889)\approx 0.0736
+$$
+
+d. For a one-sided test:
+$$
+p\text{-value}=1-\Phi(z^*)\approx 1-\Phi(1.7889)\approx 0.0368
+$$
+
+e. Part (c) is a two-sided test, where the $p$-value is the area in the tails of the standard normal distribution outside $\pm z^*$.  
+Part (d) is a one-sided test, where the $p$-value is the area under the standard normal distribution to the right of the calculated $z^*$.
+
+f. For the test $H_0:p=0.5$ vs. $H_1:p>0.5$ at $\alpha=0.05$, we reject $H_0$ because the $p$-value is less than the significance level. There is statistically significant evidence that the democratic candidate was ahead of the republican candidate at the time of conducting the poll.
+
+### Exercise 3.4
+
+a.  
+$$
+\hat p \pm Z_{0.025}\cdot SE(\hat p)
+=0.54 \pm 1.96\cdot 0.0223
+=[0.4963,\,0.5837]
+$$
+
+b.  
+$$
+\hat p \pm Z_{0.005}\cdot SE(\hat p)
+=0.54 \pm 2.576\cdot 0.0223
+=[0.4826,\,0.5974]
+$$
+
+c. Mechanically, the interval in part (b) is wider because of a larger critical value. Substantively, a 99% confidence interval is wider than a 95% confidence interval because a 99% confidence interval must contain the true value of $p$ in 99% of all possible samples, while a 95% confidence interval must contain the true value of $p$ in only 95% of all possible samples.
+
+d. Because $0.5\in$ C.I., we do not reject $H_0$ at a 5% significance level.
+
+### Exercise 3.9
+
+a. The size of a test is the probability of erroneously rejecting a null hypothesis when it is valid. We know:
+$$
+E(Y)=1000,\quad \sigma_Y=100,\quad n=50.
+$$
+
+Then,
+$$
+E(\bar Y)=1000,\qquad \sigma_{\bar Y}=\frac{\sigma_Y}{\sqrt{n}}=\frac{100}{\sqrt{50}}=10\sqrt{2}.
+$$
+
+Now,
+$$
+\text{size}=\Pr(\bar Y>1100\mid \mu=1000)
+=\Pr\left(\frac{\bar Y-1000}{\sigma_{\bar Y}}>\frac{1100-1000}{\sigma_{\bar Y}}\right)\approx 0.
+$$
+
+b. The power of a test is the probability of correctly rejecting a null hypothesis when it is invalid. First, we calculate the probability of a Type II error:
+$$
+\beta=\Pr(\bar Y\le 1100\mid \mu=1150)
+=\Pr\left(\frac{\bar Y-1150}{\sigma_{\bar Y}}\le \frac{1100-1150}{\sigma_{\bar Y}}\right)\approx 0.0002.
+$$
+
+Then, the power of the test is:
+$$
+1-\beta \approx 0.9998.
+$$
+
+c. For a test with size 1%, the rejection region for $H_0$ contains values of the $z$-statistic exceeding $Z_{0.01}$. That is,
+$$
+t^*=\frac{\bar Y-1000}{10\sqrt{2}} > Z_{0.01}=2.326.
+$$
+
+Thus,
+$$
+\bar Y > 1000+10\sqrt{2}\cdot 2.326 \approx 1032.89.
+$$
+
+So, the manager should believe the inventor’s claim if the sample mean life of the new product is greater than 1032.89 hours to maintain a test size of 1%.
+
+### Exercise 3.13
+
+a.  
+$$
+\bar Y \pm Z_{0.05}\cdot \frac{\sigma_Y}{\sqrt{n}}
+=712.1 \pm 1.645\cdot \frac{23.2}{\sqrt{400}}
+=[710.19,\,714.01]
+$$
+
+b. Prepare:
+$$
+\begin{cases}
+H_0:\ \mu_1-\mu_2=0\\
+H_A:\ \mu_1-\mu_2\neq 0
+\end{cases}
+$$
+
+where $\mu_1$ is the average salary in small class districts, and $\mu_2$ is the average salary in large class districts. Let the significance level be $\alpha=0.05$.
+
+Calculate:
+$$
+t^*=\frac{(\bar Y_1-\bar Y_2)-0}{\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}}
+=\frac{721.8-710.9}{\sqrt{\frac{21.4^2}{110}+\frac{20.6^2}{250}}}
+\approx 4.5790
+$$
+
+Conclude: Since $t^*>Z_{0.025}=1.96$, we reject $H_0$. There is statistically significant evidence that districts with smaller class sizes have higher average test scores.
+
+
+
+## Computer Exercises
+
+[(Sportscards.xlsx)](Sportscards.xlsx){target=_blank rel="noopener"}
+
+``` r
+# clear the mamory and import package
+rm(list = ls())
+library(tidyverse)
+library(readxl)
+
+card <- read_excel("data/Sportscards.xlsx")
+```
+
+```{r}
+#| echo: false 
+
+# clear the mamory and import package
+rm(list = ls())
+library(tidyverse)
+library(here)
+library(readxl)
+
+# Import data
+
+card <- read_excel(here("data", "Sportscards.xlsx"))
+```
+
+
+### Theoretical Trade Result
+
+i. A person will trade if she received good A but prefers good B or she received good B and prefers good A. 50% received good A, of these 0% prefer good B. 50% receive good B, of these 100% prefer good A. Thus, the expected fraction traded is:
+
+$$
+0.5 \times 0 + 0.5 \times 1 = 0.5
+$$
+
+ii. A person will trade if she received good A but prefers good B or she received good B and prefers good A. 50% received good A, of these 50% prefer good B; 50% receive good B, of these 50% prefer good A. Thus, the expected fraction traded is:
+
+$$
+0.5 \times 0.5 + 0.5 \times 0.5 = 0.5
+$$
+
+iii. A person will trade if she received good A but prefers good B or she received good B and prefers good A. 50% received good A, of these $(100 - X)\%$ prefer good B; 50% receive good B, of these $X\%$ prefer good A. Thus, the expected fraction traded is:
+
+$$
+0.5 \times (100 - X)\% + 0.5 \times X\% = 0.5
+$$
+
+### Empirical Trade Result
+
+Denote the probability of subjects trading their goods as $p$. We propose the following hypothesis:
+
+$$
+\begin{cases}
+H_0: p = 0.5 & \text{(no endowment effect)} \\
+H_A: p \ne 0.5 & \text{(endowment effect)}
+\end{cases}
+$$
+
+and perform the t-test:
+
+
+``` r
+t.test(
+  card$trade,
+  mu = 0.5,
+  alternative = "two.sided"
+)
+```
+
+```{r}
+#| echo: false        
+
+t.test(
+  card$trade,
+  mu = 0.5,
+  alternative = "two.sided"
+)
+```
+
+According to the testing result (p-value $< 0.05$), we reject the null hypothesis at 5% significance level. Hence there is statistically significant evidence of an endowment effect.
+
+### Empirical Trade Result: Subgroup
+
+#### Dealers
+
+Denote the probability of dealer subjects trading their goods as $p_d$. We propose the following hypothesis and perform the same testing again:
+
+$$
+\begin{cases}
+H_0: p_d = 0.5 & \text{(no endowment effect for dealer)} \\
+H_A: p_d \ne 0.5 & \text{(endowment effect for dealer)}
+\end{cases}
+$$
+
+``` r
+card_dealer <- card %>% filter(dealer == 1)
+t.test(
+  card_dealer$trade, 
+  mu = 0.5,
+  alternative = "two.sided"
+)
+```
+
+```{r}
+#| echo: false        
+
+card_dealer <- card %>% filter(dealer == 1)
+t.test(
+  card_dealer$trade, 
+  mu = 0.5,
+  alternative = "two.sided"
+)
+```
+
+According to the testing result (p-value = 0.3524), we do not reject the null hypothesis at 5% significance level. Hence there is no evidence of an endowment effect for dealer subjects.
+
+#### Non-dealers
+
+Denote the probability of non-dealer subjects trading their goods as $p_n$. We propose the following hypothesis and perform the same testing again:
+
+$$
+\begin{cases}
+H_0: p_n = 0.5 & \text{(no endowment effect for non-dealer)} \\
+H_A: p_n \ne 0.5 & \text{(endowment effect for non-dealer)}
+\end{cases}
+$$
+
+``` r
+card_nondealer <- card %>% filter(dealer == 0)
+t.test(
+  card_nondealer$trade, 
+  mu = 0.5,
+  alternative = "two.sided"
+)
+```
+
+```{r}
+#| echo: false        
+
+card_nondealer <- card %>% filter(dealer == 0)
+t.test(
+  card_nondealer$trade, 
+  mu = 0.5,
+  alternative = "two.sided"
+)
+```
+
+According to the testing result (p-value $< 0.05$), we reject the null hypothesis at 5% significance level. Hence there is statistically significant evidence of an endowment effect on non-dealer subjects.
+
+#### Group difference
+
+To investigate into the group difference in behavior, we propose the following hypothesis:
+
+$$
+\begin{cases}
+H_0: p_d - p_n = 0 & \text{(no group difference in behavior)} \\
+H_A: p_d - p_n \ne 0 & \text{(group difference in behavior)}
+\end{cases}
+$$
+
+Since we can't determine the distribution of $p_d - p_n$, we utilize the CLT and perform the t-test:
+
+``` r
+t.test(
+  card$trade ~ card$dealer,
+  conf.level = 0.95,
+  alternative = "two.sided"
+)
+```
+
+```{r}
+#| echo: false        
+
+t.test(
+  card$trade ~ card$dealer,
+  conf.level = 0.95,
+  alternative = "two.sided"
+)
+```
+
+According to the testing result (p-value $< 0.05$), we reject the null hypothesis at 5% significance level. Hence there is statistically significant difference in the behavior between dealer and non-dealer.

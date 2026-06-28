@@ -1,0 +1,495 @@
+---
+title: 'Homework 5 Answers'
+fig-cap: false
+editor:
+  markdown:
+    wrap: 72
+---
+
+-   If you find any typos or errors, please feel free to contact me via
+    email at r13323002\@ntu.edu.tw. I would appreciate it and will
+    correct the solution to prevent any misunderstandings.
+
+-   For some R commands marked with ‘OPTIONAL,’ you don’t need to learn
+    them. You will be completely fine on the computer quiz even if you
+    choose to ignore them.
+
+-   If you’re having trouble understanding the code, don’t hesitate to
+    ask me for help. I’ll do my best to assist you during office hours
+    or after the TA session.
+
+## Textbook Exercises
+
+### Exercise 10.1
+
+a.  Other things being equal, if the tax on a case of beer increases by
+$2, the number of lives saved is:
+
+$$
+2 \times 0.69 \times 885 = 1221.3
+$$
+
+and the 99% confidence interval for the number of lives saved is:
+
+$$
+[0.69 \pm Z_{0.005} \times 0.35] \times 2 \times 885 = [-374.53, 2817.13]
+$$
+
+b.  If New Jersey lowers its drinking age to 19, the predicted decrease
+in traffic fatalities is:
+
+$$
+0.08 \times 885 = 70.8
+$$
+
+and the 95% confidence interval for the number of traffic fatalities
+is:
+
+$$
+[0.08 \pm Z_{0.025} \times 0.07] \times 885 = [-50.62, 192.22]
+$$
+
+c.  If real income per capita in New Jersey increases by 3%, the
+predicted increase in traffic fatalities is:
+
+$$
+3 \times 0.01 \times 1.79 \times 885 = 47.52
+$$
+
+and the 95% confidence interval for the number of traffic fatalities
+is:
+
+$$
+[1.79 \pm Z_{0.025} \times 0.64] \times 0.01 \times 3 \times 885 = [14.22, 80.83]
+$$
+
+d.  Standard errors should be clustered into groups within which the
+values of the dependent variable are likely to be correlated with
+one another. In this case, the natural candidate group is to cluster
+by state.
+
+e.  If we believe that drinking age affects the number of fatalities due
+to alcohol through a linear function, then age should be entered as
+a continuous variable. If we allow for nonlinearities in this
+relationship, we should allow for separate intercepts for each age.
+
+### Exercise 10.5
+
+$$
+\begin{aligned}
+Y_{11} &= \beta_1 X_{11} + \alpha_1 + \lambda_1 + u_{11} \\
+&= \beta_0 + \beta_1 X_{11} + u_{11} \\
+Y_{i1} &= \beta_1 X_{i1} + \alpha_i + \lambda_1 + u_{i1} \\
+&= \beta_0 + \beta_1 X_{1i} + \gamma_i + u_{i1}, \quad i = 2, \dots, n \\
+Y_{1t} &= \beta_1 X_{1t} + \alpha_1 + \lambda_t + u_{1t} \\
+&= \beta_0 + \beta_1 X_{1t} + \delta_t + u_{1t}, \quad t = 2, \dots, T
+\end{aligned}
+$$
+
+We have
+
+$$
+\begin{aligned}
+\beta_0 &= \alpha_1 + \lambda_1 \\
+\gamma_i &= \alpha_i + \lambda_1 - \beta_0 \\
+&= \alpha_i - \alpha_1, \quad i = 2, \dots, n \\
+\delta_t &= \alpha_1 + \lambda_t - \beta_0 \\
+&= \lambda_t - \lambda_1, \quad t = 2, \dots, T.
+\end{aligned}
+$$
+
+### Exercise 11.1
+
+a.  **Prepare**:
+
+$$
+\left\{\begin{aligned}
+    &H_0: \beta_{\text{schooling}} = 0 \\
+    &H_1: \beta_{\text{schooling}} \neq 0
+    \end{aligned}\right.
+$$
+
+Let the significance level be $\alpha = 0.05$.
+
+**Calculate**:
+
+$$
+t^* = \frac{0.272 - 0}{0.029} \approx 9.379
+$$
+
+**Conclude**:
+
+Since $|t^*| > Z_{0.05} = 1.96$, we reject $H_0$. There is
+significant evidence that schooling affects the probability of
+working for the government.
+
+b.  The predicted probability that Friedrich will be employed by the
+government is:
+
+$$
+\Phi(-4.107 + 0.272 \times 16) \approx 0.5968
+$$
+
+c.  The predicted probability that Hans will get a government job:
+
+$$
+\Phi(-4.107 + 0.272 \times 12) \approx 0.1996
+$$
+
+d.  The predicted probability that Günter will be employed by the
+government:
+
+$$
+\Phi(-4.107 + 0.272 \times 24) \approx 0.9923
+$$
+
+This prediction is likely inaccurate, as the sample did not include
+individuals with more than 24 years of schooling.
+
+### Exercise 11.4
+
+a.  In column (4), the estimated probability of being employed by the
+government:
+
+-   For men:
+
+$$
+\Phi(-1.027 - 0.242) \approx 0.1022
+$$
+
+-   For women:
+
+$$
+\Phi(-1.027) \approx 0.1522
+$$
+
+In column (5), the estimated probability:
+
+-   For men:
+
+$$
+\frac{1}{1 + \exp[-(-1.717 - 0.455)]} \approx 0.1023
+$$
+
+-   For women:
+
+$$
+\frac{1}{1 + \exp[-(-1.717)]} \approx 0.1523
+$$
+
+In column (6), the estimated probability:
+
+-   For men:
+
+$$
+0.152 - 0.050 = 0.102
+$$
+
+-   For women:
+
+$$
+0.152
+$$
+
+b.  Because there is only a regressor and it is binary
+($\textit{Male}$), estimates for each model show the fraction of
+males and females who get employed by the government. Hence the
+results are close to each other.
+
+### Exercise 11.5
+
+a.  The predicted probability that Liam will be employed by the
+government is:
+
+$$
+\Phi(-7.702 + 0.548 \times 10 + 4.352 - 0.344 \times 10) \approx 0.0951
+$$
+
+b.  The predicted probability that Anneli will be employed by the
+government is:
+
+$$
+\Phi(-7.702 + 0.548 \times 12) \approx 0.1301
+$$
+
+c.  **Prepare**:
+
+$$
+\left\{\begin{aligned}
+    &H_0: \beta_{\textit{male} \times \textit{schooling}} = 0 \\
+    &H_1: \beta_{\textit{male} \times \textit{schooling}} \neq 0
+    \end{aligned}\right.
+$$
+
+Let the significance level be $\alpha = 0.05$.
+
+**Calculate**:
+
+$$
+t^* = \frac{-0.344 - 0}{0.096} \approx -3.583
+$$
+
+**Conclude**:
+
+Since $|t^*| > Z_{0.05} = 1.96$, we reject $H_0$. There is
+significant evidence that the effect of schooling on government
+employment depends on gender.
+
+## Computer Exercises
+
+[(insurance.csv)](insurance.csv){target="_blank" rel="noopener"}
+
+``` r
+# remove pre-load data, and import package
+rm(list = ls())
+library(tidyverse)
+library(estimatr) # for robust SE
+library(texreg) # compile regression result into one table
+library(sandwich) # Heteroskedasticity-Robust Standard Errors in testing (vcovHC)
+library(car) # short for "Companion to Applied Regression", used for hypothesis testing
+
+insurance <- read.csv("data/insurance.csv")
+```
+
+```{r}
+#| echo: false
+# remove pre-load data, and import package
+rm(list = ls())
+library(tidyverse)
+library(estimatr) # for robust SE
+library(texreg) # compile regression result into one table
+library(sandwich) # Heteroskedasticity-Robust Standard Errors in testing (vcovHC)
+library(car) # short for "Companion to Applied Regression", used for hypothesis testing
+library(here)
+
+insurance <- read.csv(here("data", "insurance.csv"))
+```
+
+### Linear Model
+
+Consider the following specification:
+
+$$
+\textit{insured}_i = \beta_0 + \beta_1 \textit{selfemp}_i + u_i
+$$
+
+we propose the hypothesis:
+
+$$
+\left\{\begin{aligned}
+&H_0: \beta_1 = 0 \\
+&H_1: \beta_1 \neq 0
+\end{aligned}\right.
+$$
+
+``` r
+reg_1a <- lm_robust(
+  formula = insured ~ selfemp,
+  data = insurance,
+  se_type = "HC1"
+)
+summary(reg_1a)
+```
+
+```{r}
+#| echo: false
+
+reg_1a <- lm_robust(
+  formula = insured ~ selfemp,
+  data = insurance,
+  se_type = "HC1"
+)
+summary(reg_1a)
+```
+
+From the testing result, we have its $p$-value is very small ($<5\%$).
+There is significant evidence that the self-employed are less likely to
+have health insurance than wage earners.
+
+### Non-Linear Models Comparison
+
+Consider the following specification:
+
+$$
+\textit{insured}_i = \beta_0 + \beta_1 \textit{selfemp}_i + \sum_{k\in\mathcal{I}}\beta_k x_k + u_i
+$$
+
+where $\mathcal{I}$ denotes the set of control variables. We propose the
+hypothesis:
+
+$$
+\left\{\begin{aligned}
+&H_0: \beta_1 = 0 \\
+&H_1: \beta_1 \neq 0
+\end{aligned}\right.
+$$
+
+``` r
+# complete specification
+formula_1b <- insured ~ selfemp + age + deg_nd + deg_ged + deg_hs + deg_ba + deg_ma + deg_phd +
+  familysz + race_bl + race_wht + male + married
+
+# estimations
+LPM_1b <- lm_robust(
+  formula = formula_1b,
+  data = insurance,
+  se_type = "HC1"
+)
+Logit_1b <- glm(
+  formula = formula_1b,
+  data = insurance,
+  family = binomial(link = "logit")
+)
+Probit_1b <- glm(
+  formula = formula_1b,
+  data = insurance,
+  family = binomial(link = "probit")
+)
+
+# compile into one result table
+screenreg(
+  list(LPM_1b, Logit_1b, Probit_1b),
+  include.ci = FALSE,
+  digits = 4,
+  custom.model.names = c("LPM", "Logit", "Probit")
+)
+```
+
+```{r}
+#| echo: false
+
+# complete specification
+formula_1b <- insured ~ selfemp + age + deg_nd + deg_ged + deg_hs + deg_ba + deg_ma + deg_phd +
+  familysz + race_bl + race_wht + male + married
+
+# estimations
+LPM_1b <- lm_robust(
+  formula = formula_1b,
+  data = insurance,
+  se_type = "HC1"
+)
+Logit_1b <- glm(
+  formula = formula_1b,
+  data = insurance,
+  family = binomial(link = "logit")
+)
+Probit_1b <- glm(
+  formula = formula_1b,
+  data = insurance,
+  family = binomial(link = "probit")
+)
+
+# compile into one result table
+screenreg(
+  list(LPM_1b, Logit_1b, Probit_1b),
+  include.ci = FALSE,
+  digits = 4,
+  custom.model.names = c("LPM", "Logit", "Probit")
+)
+```
+
+From the testing result, we have the $p$-value is very small ($<5\%$)
+and reject the null hypothesis. There is significant evidence that the
+self-employed are less likely to have health insurance than wage
+earners.
+
+### Prediction: LPM
+
+``` r
+person <- data.frame(
+  age = 50, # 50 year-old
+  race_bl = 0, race_wht = 1, # white
+  male = 0, # female
+  deg_nd = 0, deg_ged = 0, deg_hs = 0, deg_ba = 0, deg_ma = 0, deg_phd = 1, # phd
+  familysz = 1, # family size 1
+  married = 1, # married
+  selfemp = 0 # wage earner
+)
+predict(LPM_1b, person)
+```
+
+```{r}
+#| echo: false
+
+person <- data.frame(
+  age = 50, # 50 year-old
+  race_bl = 0, race_wht = 1, # white
+  male = 0, # female
+  deg_nd = 0, deg_ged = 0, deg_hs = 0, deg_ba = 0, deg_ma = 0, deg_phd = 1, # phd
+  familysz = 1, # family size 1
+  married = 1, # married
+  selfemp = 0 # wage earner
+)
+predict(LPM_1b, person)
+```
+
+From LPM, the predicted probability of having health insurance for a 50
+year old white female, with a phd degree, family size of 1, married and
+wage earner is $1.107$, which does not make sense because the
+probability must be between 0 and 1 by definition.
+
+### Prediction: Logit & Probit
+
+``` r
+predict(Logit_1b, person, type = "response")
+```
+
+```{r}
+#| echo: false
+
+predict(Logit_1b, person, type = "response")
+```
+
+``` r
+predict(Probit_1b, person, type = "response")
+```
+
+```{r}
+#| echo: false
+
+predict(Probit_1b, person, type = "response")
+```
+
+The predicted probability of having health insurance for the same person
+is 0.983 for the logit model, and 0.989 for the probit model. These
+estimates make sense and differ from LPM since we use the link function
+to transfer suitable function form to evaluate.
+
+### Hypothesis Testing
+
+We propose the following hypothesis:
+
+$$
+\left\{\begin{aligned}
+&H_0: \beta_{\textit{race\_bl}} = \beta_{\textit{race\_wht}} = 0 \\
+&H_1: \text{Not all coefficients are zero}
+\end{aligned}\right.
+$$
+
+and perform the F-test:
+
+``` r
+linearHypothesis(
+  Logit_1b,
+  c("race_bl = 0", "race_wht = 0"),
+  vcov = vcovHC,
+  type = "HC1",
+  test = "F"
+)
+```
+
+```{r}
+#| echo: false
+
+linearHypothesis(
+  Logit_1b,
+  c("race_bl = 0", "race_wht = 0"),
+  vcov = vcovHC,
+  type = "HC1",
+  test = "F"
+)
+```
+
+From the testing result, we have the $p$-value is very small ($<5\%$)
+and reject the null hypothesis. There is significant evidence that
+black, white and others are not equally likely to be insured.

@@ -1,0 +1,44 @@
+---
+title: "Week 12 Practices (0512)"
+---
+
+## Farming Life in Another World Season 2 (異世界悠閒農家 第二季)
+
+Hiraku manages many fields in the village. Some fields are cultivated by Hiraku using the Almighty Farming Tool (萬能農具), while other fields are cultivated by ordinary farming methods. The information of each field are documented by Fraurem inside a csv. The dataset contains:
+
+- `plot_id`: The ID of the field.
+- `crop`: The crop planted in the field.
+- `field_size_m2`: The size of the field, measured in `square meters`.
+- `almighty_farming_tool`: Whether the field was cultivated using the Almighty Farming Tool.
+- `harvest_result_2023`: The amount of crops harvested in `2023`, measured in sacks.
+- `harvest_result_2024`: The amount of crops harvested in `2024`, measured in sacks.
+- `harvest_result_2025`: The amount of crops harvested in `2025`, measured in sacks.
+
+Hiraku plans to grow a new tomato field, and he wants to know how much the predicted probability of becoming a high-yield field increases if the field is cultivated with the Almighty Farming Tool. Follow the instructions below to help Hiraku study these questions.
+
+0. Before you begin, complete the setup:
+
+    - Open the project you created for the TA Session by clicking on `.Rproj` (if you do not have one, create it).
+    - Open a new script and save it in the `script` folder.
+    - Download the dataset `farming.csv` and save it in the `data` folder. [(right click here)](farming.csv){target="_blank" rel="noopener"}
+    - Install and call the packages `tidyverse`, `estimatr`, and `pscl`.
+    - (Optional) Remove all objects from the environment using `rm(list = ls())`.
+
+1. Read `farming.csv` and save it as `farming_raw`. Then create a new dataframe called `farming_tidy` by copying `farming_raw`.
+
+2. Use `pivot_longer()` to reshape the harvest columns into long form. The new dataset should have:
+
+    - one row for each field-year,
+    - a column called `harvest_year`,
+    - a column called `harvest_result`.
+
+3. Create a new variable called `high_yield_field`. Let `high_yield_field` be equal to `1` if `harvest_result` is larger than `50`, and `0` otherwise.
+
+4. Fit a logarithmic regression model called `reg_log_harvest` using `lm_robust()`. The response variable is `log(harvest_result)`, and the predictors are `field_size_m2`, `almighty_farming_tool`, and `crop`. Print the regression summary.
+
+5. Fit a logistic regression model called `logit_high_yield` using `glm()`. The response variable is `high_yield_field`, and the predictors are `field_size_m2`, `almighty_farming_tool`, and `crop`.  Print the regression summary, and use `pR2()` to calculate the pseudo-$R^2$ of the logistic regression model.
+
+6. Create a new dataframe called `new_tomato_fields` with two `tomato` fields of `3000` square meters: one cultivated with the Almighty Farming Tool and one cultivated without it. Use `logit_high_yield` and `predict()` to calculate the probability of each field to be a `high_yield_field`.
+
+![](farming.gif){width="960" fig-align="center" fig-alt="Animated welcome"} 
+

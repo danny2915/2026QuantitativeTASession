@@ -1,0 +1,336 @@
+---
+title: "Week 6 Answers (0331)"
+format: html
+editor: visual
+---
+
+## Spice and Wolf (狼與辛香料)
+
+Lawrence and Holo goes from town to town to make profits as a travelling merchant. To decide where bread is relatively expensive or cheap, Lawrence records the quoted market prices of several goods in 24 towns and cities along the route.
+
+The dataset contains:
+
+-   `place`: The name of the town or city.
+-   `region`: The broad trading region of the market (`North`, `Central`, or `South`).
+-   `market_type`: The type of market (`village`, `market_town`, `church_city`, `port_city`, or `spa_town`).
+-   `bread_price`: The quoted bread price in each market.
+-   `wheat_price`: The quoted wheat price in each market.
+-   `rye_price`: The quoted rye price in each market.
+-   `cheese_price`: The quoted cheese price in each market.
+-   `butter_price`: The quoted butter price in each market.
+
+Prices are recorded as character strings, and some markets use the currency unit `trenni` while others use `lumione`. The exchange rate is 1 `lumione` = 4 `trenni`.
+
+In this world, rye is often treated as a substitute for wheat, while cheese and butter are commonly sold and consumed together with bread. Hence, Lawrence wants to know how the price of `bread` is related to the prices of `wheat`, `rye`, `cheese`, and `butter`. Follow the instructions below to help Lawrence study these price relationships.
+
+0.  Before you begin, complete the setup:
+
+    -   Open the project you created for the TA Session by clicking on `.Rproj` (if you do not have one, create it).
+    -   Open a new script and save it in the `script` folder.
+    -   Download the dataset `spice_and_wolf.csv` and save it in the `data` folder. [(right click here)](spice_and_wolf.csv){target="_blank" rel="noopener"}
+    -   Install and call the packages `tidyverse`, `estimatr`, and `texreg`.
+    -   Create an `output` folder inside the project folder if you do not already have one.
+    -   (Optional) Remove all objects from the environment using `rm(list = ls())`.
+
+1.  Read `spice_and_wolf.csv` and save it as `spice_and_wolf_raw`. Then create a new dataframe called `spice_and_wolf_tidy` by copying `spice_and_wolf_raw`.
+
+2.  Convert all price columns in `spice_and_wolf_tidy` from mixed currency strings into `numeric` prices measured in `trenni`. (1 `lumione` = 4 `trenni`)
+
+::: {.callout-tip title="Hint. (Try it yourself before you open it!)" collapse="true"}
+Check whether the value in price columns contains `"trenni"` or `"lumione"` for each row inside a `for` loop.
+
+-   If it contains `"trenni"`, remove the last 6 characters.
+-   If it contains `"lumione"`, remove the last 7 characters and multiply the result by 4.
+-   Make sure that all price columns are of `numeric` type.
+:::
+
+3.  Create a two-way table of `region` and `market_type`, and add margins to the table.
+
+4.  Fit a linear regression model called `reg_bread_on_wheat` with `bread_price` as the response variable and `wheat_price` as the predictor. Print the regression summary.
+
+5.  Fit a linear regression model called `reg_bread_on_all` with `bread_price` as the response variable and `wheat_price`, `rye_price`, `cheese_price`, and `butter_price` as the predictors. Print the regression summary. Does the coefficient on `wheat_price` change?
+
+6.  Fit a robust linear regression model called `reg_bread_on_all_robust` using the same formula as in Step 5. Print the regression summary. How does the result differ from `reg_bread_on_all`?
+
+7.  Compare `reg_bread_on_wheat`, `reg_bread_on_all`, and `reg_bread_on_all_robust` using `screenreg()`.
+
+### TA Answer Code: Po-Hsien Kang
+
+``` r
+library(tidyverse)
+library(estimatr)
+library(texreg)
+
+spice_and_wolf_raw <- read.csv("data/spice_and_wolf.csv")
+
+spice_and_wolf_tidy <- spice_and_wolf_raw
+
+for(i in 1:nrow(spice_and_wolf_tidy)){
+  if(grepl("trenni", spice_and_wolf_tidy[i, 4])){
+    spice_and_wolf_tidy[i, 4:8] <- substring(
+      spice_and_wolf_tidy[i, 4:8], 
+      1, 
+      nchar(spice_and_wolf_tidy[i, 4:8]) - 6
+      ) %>% as.numeric()
+  }
+  else{
+    spice_and_wolf_tidy[i, 4:8] <- (substring(
+      spice_and_wolf_tidy[i, 4:8],
+      1, 
+      nchar(spice_and_wolf_tidy[i, 4:8]) - 7
+      ) %>% as.numeric()
+      ) * 4
+  }
+}
+
+price_col <- colnames(spice_and_wolf_tidy)[4:8]
+for(col in price_col){
+  spice_and_wolf_tidy[[col]] <- as.numeric(spice_and_wolf_tidy[[col]])
+}
+
+addmargins(table(spice_and_wolf_tidy$region, spice_and_wolf_tidy$market_type))
+
+reg_bread_on_wheat <- lm(bread_price ~ wheat_price, data = spice_and_wolf_tidy)
+summary(reg_bread_on_wheat)
+
+reg_bread_on_all <- lm(
+  bread_price ~ wheat_price + rye_price + cheese_price + butter_price,
+  data = spice_and_wolf_tidy
+)
+summary(reg_bread_on_all)
+
+reg_bread_on_all_robust <- lm_robust(
+  bread_price ~ wheat_price + rye_price + cheese_price + butter_price,
+  data = spice_and_wolf_tidy
+)
+summary(reg_bread_on_all_robust)
+
+screenreg(
+  list(reg_bread_on_wheat, reg_bread_on_all, reg_bread_on_all_robust),
+  custom.model.names = c("Bread on wheat", "Bread on all goods", "Bread on all goods (Robust)"),
+  include.ci = FALSE,
+  digit = 3
+)
+```
+
+### TA Answer Code: Shuhan Chen
+
+``` r
+library(tidyverse)
+library(estimatr)
+library(texreg)
+rm(list = ls())
+
+spice_and_wolf_tidy <- spice_and_wolf_raw
+
+for (i in 4:8) {
+  spice_and_wolf_tidy[[i]] <- ifelse(
+    grepl("trenni", spice_and_wolf_tidy[[i]]),
+    as.numeric(substring(spice_and_wolf_tidy[[i]], 1, nchar(spice_and_wolf_tidy[[i]]) - 6)),
+    as.numeric(substring(spice_and_wolf_tidy[[i]], 1, nchar(spice_and_wolf_tidy[[i]]) - 7)) * 4
+  )
+}
+
+# create table
+# =================
+spice_table <- table(spice_and_wolf_tidy$region, spice_and_wolf_tidy$market_type)
+spice_table <- addmargins(spice_table)
+
+# reg
+# =================
+reg_bread_on_wheat <- lm(data = spice_and_wolf_tidy,
+                         bread_price ~ wheat_price)
+summary(reg_bread_on_wheat)
+
+
+reg_bread_on_all <- lm(data = spice_and_wolf_tidy,
+                         bread_price ~ wheat_price + rye_price + cheese_price + butter_price)
+summary(reg_bread_on_all)
+# Yes, 1.21 => 0.77
+
+
+reg_bread_on_all_robust <- lm_robust(data = spice_and_wolf_tidy,
+                          bread_price ~ wheat_price + rye_price + cheese_price + butter_price)
+summary(reg_bread_on_all_robust)
+# Yes, rye p-value 0.03 => 0.09
+
+screenreg(
+  list(reg_bread_on_wheat, reg_bread_on_all, reg_bread_on_all_robust),
+  custom.model.names =
+    c("Model 1: Single",
+      "Model 2: Multiple",
+      "Model 3: Multiple (Robust SE)"),
+  # present standard error
+  include.ci = FALSE,
+  digit = 3
+)
+```
+
+### TA Answer Code: Tom
+
+``` r
+library(tidyverse)
+library(estimatr)
+library(texreg)
+
+spice_and_wolf_raw <- read_csv("data/spice_and_wolf.csv")
+spice_and_wolf_tidy <- spice_and_wolf_raw
+
+price_cols <- c(
+  "bread_price",
+  "wheat_price",
+  "rye_price",
+  "cheese_price",
+  "butter_price"
+)
+
+convert_to_trenni <- function(x) {
+  value_num <- ifelse(
+    grepl("lumione", x),
+    as.numeric(substring(x, 1, nchar(x) - 8)),
+    ifelse(
+      grepl("trenni", x),
+      as.numeric(substring(x, 1, nchar(x) - 7)), 
+      NA
+    )
+  )
+  
+  value_trenni <- ifelse(
+    grepl("lumione", x),
+    value_num * 4,
+    ifelse(
+      grepl("trenni", x),
+      value_num,
+      NA
+    )
+  )
+  
+  return(value_trenni)
+}
+
+for (v in price_cols) {
+  spice_and_wolf_tidy[[v]] <- convert_to_trenni(spice_and_wolf_tidy[[v]])
+}
+
+region_market_tab <- table(
+  spice_and_wolf_tidy$region,
+  spice_and_wolf_tidy$market_type
+)
+
+row_totals <- rowSums(region_market_tab)
+col_totals <- colSums(region_market_tab)
+grand_total <- sum(region_market_tab)
+
+region_market_tab_with_total <- rbind(region_market_tab, Total = col_totals)
+region_market_tab_with_total <- cbind(
+  region_market_tab_with_total,
+  Total = c(row_totals, grand_total)
+)
+
+region_market_tab_with_total
+
+reg_bread_on_wheat <- lm(
+  bread_price ~ wheat_price,
+  data = spice_and_wolf_tidy
+)
+
+summary(reg_bread_on_wheat)
+
+reg_bread_on_all <- lm(
+  bread_price ~ wheat_price + rye_price + cheese_price + butter_price,
+  data = spice_and_wolf_tidy
+)
+
+summary(reg_bread_on_all)
+
+coef(reg_bread_on_wheat)["wheat_price"]
+coef(reg_bread_on_all)["wheat_price"]
+
+reg_bread_on_all_robust <- lm_robust(
+  bread_price ~ wheat_price + rye_price + cheese_price + butter_price,
+  data = spice_and_wolf_tidy
+)
+
+summary(reg_bread_on_all_robust)
+
+screenreg(
+  list(
+    reg_bread_on_wheat,
+    reg_bread_on_all,
+    reg_bread_on_all_robust
+  ),
+  custom.model.names = c(
+    "Bread on Wheat",
+    "Bread on All",
+    "Bread on All (Robust)"
+  ),
+  digits = 3
+)
+```
+
+```{r}
+#| echo: false      
+
+rm(list = ls())
+
+library(tidyverse)
+library(estimatr)
+library(texreg)
+library(here)
+
+spice_and_wolf_raw <- read.csv(here("data", "spice_and_wolf.csv"))
+
+spice_and_wolf_tidy <- spice_and_wolf_raw
+
+for(i in 1:nrow(spice_and_wolf_tidy)){
+  if(grepl("trenni", spice_and_wolf_tidy[i, 4])){
+    spice_and_wolf_tidy[i, 4:8] <- substring(
+      spice_and_wolf_tidy[i, 4:8], 
+      1, 
+      nchar(spice_and_wolf_tidy[i, 4:8]) - 6
+      ) %>% as.numeric()
+  }
+  else{
+    spice_and_wolf_tidy[i, 4:8] <- (substring(
+      spice_and_wolf_tidy[i, 4:8],
+      1, 
+      nchar(spice_and_wolf_tidy[i, 4:8]) - 7
+      ) %>% as.numeric()
+      ) * 4
+  }
+}
+
+price_col <- colnames(spice_and_wolf_tidy)[4:8]
+for(col in price_col){
+  spice_and_wolf_tidy[[col]] <- as.numeric(spice_and_wolf_tidy[[col]])
+}
+
+
+addmargins(table(spice_and_wolf_tidy$region, spice_and_wolf_tidy$market_type))
+
+
+reg_bread_on_wheat <- lm(bread_price ~ wheat_price, data = spice_and_wolf_tidy)
+summary(reg_bread_on_wheat)
+
+reg_bread_on_all <- lm(
+  bread_price ~ wheat_price + rye_price + cheese_price + butter_price,
+  data = spice_and_wolf_tidy
+)
+summary(reg_bread_on_all)
+
+reg_bread_on_all_robust <- lm_robust(
+  bread_price ~ wheat_price + rye_price + cheese_price + butter_price,
+  data = spice_and_wolf_tidy
+)
+summary(reg_bread_on_all_robust)
+
+screenreg(
+  list(reg_bread_on_wheat, reg_bread_on_all, reg_bread_on_all_robust),
+  custom.model.names = c("Bread on wheat", "Bread on all goods", "Bread on all goods (Robust)"),
+  include.ci = FALSE,
+  digit = 3
+)
+
+```
+
+![](spice_and_wolf.gif){width="960" fig-align="center" fig-alt="Animated welcome"}

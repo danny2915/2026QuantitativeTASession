@@ -1,0 +1,9 @@
+---
+title: "How to Prepare for an R Quiz"
+---
+
+```{=html}
+<iframe src="How to Prepare for an R Quiz.pdf" width="100%" height="800" style="border:1px solid #ddd;"></iframe>
+[Open in new tab](How to Prepare for an R Quiz.pdf){target=_blank rel="noopener"}
+ ·
+[Download PDF](How to Prepare for an R Quiz.pdf)

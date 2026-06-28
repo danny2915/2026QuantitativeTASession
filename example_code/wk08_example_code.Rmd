@@ -1,0 +1,61 @@
+---
+title: "Introductory Econometrics with Recitation: TA Session Week 8"
+author: "Danny Po-Hsien Kang"
+date: "April 14, 2026"
+output: html_document
+---
+
+## Text Formatting
+
+In R Markdown, you write your text using **Markdown syntax**.
+
+For example,
+
+$$
+\text{AWE} = \beta_0 + \sum_{i=1}^3 \beta_i X_i + u
+$$
+
+**Headings:**
+
+# Heading 1 (Big Title)
+
+## Heading 2 (Section)
+
+### Heading 3 (Subsection)
+
+**Bold and Italics:**
+
+*Italic text* **Bold text**
+
+**Lists and numbers:**
+
+-   Item 1
+-   Item 2
+    -   Sub-item 2.1
+
+1.  First item
+2.  Second item
+    1.  Sub-item 2.1
+
+**Links:**
+
+[Link to Google](https://www.google.com)
+
+## R Code Chunks
+
+```{r}
+library(here)
+library(tidyverse)
+birth <- read.csv(here("data", "ncbirths.csv"))
+summary(birth$weight)
+```
+
+```{r, echo=FALSE}
+ggplot(birth, aes(x = weeks, y = weight)) +
+  geom_point(color = "steelblue", size = 2.5) +
+  labs(
+    x = "Birth Weeks",
+    y = "Baby Weight (pounds)"
+  )
+
+```

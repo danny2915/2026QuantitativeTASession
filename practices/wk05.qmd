@@ -1,0 +1,74 @@
+---
+title: "Week 5 Practices (0324)"
+---
+
+## Can your Quiz score predict your Midterm score?
+
+In this practice, we will use the (simulated) data from the 2025 Statistics with Recitation course to examine whether students' quiz scores can be good predictors of their midterm scores.
+
+::: {.callout-tip title="Note"}
+This dataset is not the raw data from the course. I simulated the data based on the raw data and made sure that the new dataset generates results very similar to those of the original dataset.
+:::
+
+The dataset contains:
+
+- `ID`: The ID number of each student.
+- `section`: The section each student belongs to.
+- `midterm`, `quiz_1`, `quiz_2`, `quiz_3`: The corresponding midterm and quiz scores, where midterm scores range from 0 to 100 and quiz scores range from 0 to 30.
+
+Please follow the instructions below to conduct the analysis. (Take a guess before you do it!)
+
+
+0. Before you begin, complete the setup:
+
+   - Open the project you created for the TA Session by clicking on `.Rproj` (if you do not have one, create it).
+   - Open a new script and save in the script folder.
+   - Download the dataset `grades.csv` and save it in the `data` folder. [(right click here)](grades.csv){target=_blank rel="noopener"}  
+   - Call the package `tidyverse`.
+   - Create an `output` folder inside the project folder if you do not have one.
+   - (Optional) Remove all objects from the environment using `rm(list = ls())`.
+
+1. Read `grades.csv` and save it as `grades_raw`.
+
+2. Replace all blank cells in `grades_raw` with `NA`.
+
+::: {.callout-tip title="Hint"}
+Use `grades_raw[grades_raw == ""] <- NA`.
+:::
+
+3. Create a new dataframe called `grades_tidy` from `grades_raw` with the following steps:
+
+   - Keep only the rows where `section` is `"國立臺灣大學修課學生 (ECON2022-03)"`.
+   - Remove the columns `ID` and `section`.
+   - Remove rows with missing values using `na.omit()`.
+   - Convert `midterm`, `quiz_1`, `quiz_2`, and `quiz_3` to numeric type.
+   - Create a new column `avg_quiz_score` equal to the average of `quiz_1`, `quiz_2`, and `quiz_3`.
+
+4. Rename the columns of `grades_tidy` as follows: `midterm`, `quiz_ch_1to2`, `quiz_ch_3to4`, `quiz_r`,  `avg_quiz_score`.
+
+5. First, let's see if there's relationship between students' midterm scores and their average quiz scores. Make a scatter plot with `avg_quiz_score` on the x-axis, `midterm` on the y-axis, and with the settings:
+
+   - x-axis: `"Average Quiz Score"`, ranges from `0` to `30`
+   - y-axis: `"Midterm Score"`, ranges from `0` to `100`
+   - color: `"steelblue"`
+   - size: `2.5`
+   - Labels: x `"Average Quiz Score"`, y `"Midterm Score"`
+
+6. Print the correlation between `midterm` and `avg_quiz_score`.
+
+7. Fit a linear regression model called `reg_midterm_on_avg` with `midterm` as the response variable and `avg_quiz_score` as the predictor. Save its summary as `reg_midterm_on_avg_summary`, and print the summary. What is the result? Does it match what you see in the scatter plot?
+
+8. Next, let us investigate further to see which quiz serves as the best predictor of the midterm score. Fit a linear regression model called `reg_midterm_on_all_quiz` with `midterm` as the response variable and `quiz_ch_1to2`, `quiz_ch_3to4`, and `quiz_r` as the predictors. Save its summary as `reg_midterm_on_all_quiz_summary`, and print the summary. **How would you explain the regression result?**
+
+9. Creating a plot `reg_midterm_on_avg_plot` by adding a regression line (in step 6) to the plot you just created in step 5 with the following settings and then print it.
+
+   - slope: the coefficient of `avg_quiz_score` from `reg_midterm_on_avg_summary`
+   - intercept: the intercept from `reg_midterm_on_avg_summary`
+   - color: `"lightcoral"`
+   - linetype: `"dashed"`
+
+10. Save `reg_midterm_on_avg_plot` into an `output` folder as a `png` file named `reg_midterm_on_avg_plot.png` using `ggsave()` with the settings: `width = 12`, `height = 8`, `dpi = 300`.
+
+
+
+![](reset.gif){width="960" fig-align="center" fig-alt="Animated welcome"}

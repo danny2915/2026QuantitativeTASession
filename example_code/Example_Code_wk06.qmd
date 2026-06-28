@@ -1,0 +1,7 @@
+---
+title: "Week 6 Example R Code (0331)"
+---
+
+Right click to download:
+
+- [wk06_example_code.R](wk06_example_code.R)

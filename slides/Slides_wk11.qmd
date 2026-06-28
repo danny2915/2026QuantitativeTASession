@@ -1,0 +1,9 @@
+---
+title: "Week 11 Slides (0505)"
+---
+
+```{=html}
+<iframe src="Slides_wk11.pdf" width="100%" height="800" style="border:1px solid #ddd;"></iframe>
+[Open in new tab](Slides_wk11.pdf){target=_blank rel="noopener"}
+ ·
+[Download PDF](Slides_wk11.pdf)

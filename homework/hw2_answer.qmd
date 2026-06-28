@@ -1,0 +1,429 @@
+---
+title: 'Homework 2 Answers'
+fig-cap: false
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+-   If you find any typos or errors, please feel free to contact me via
+    email at r13323002\@ntu.edu.tw. I would appreciate it and will
+    correct the solution to prevent any misunderstandings.
+
+-   For some R commands marked with ‘OPTIONAL,’ you don’t need to learn
+    them. You will be completely fine on the computer quiz even if you
+    choose to ignore them.
+
+-   If you’re having trouble understanding the code, don’t hesitate to
+    ask me for help. I’ll do my best to assist you during office hours
+    or after the TA session.
+
+## Textbook Exercises
+
+### Exercise 4.1
+
+a.  
+
+$$
+\widehat{\text{TestScore}} = 640.3 - 4.93 \times 25 = 517.05
+$$
+
+b.  
+
+$$
+\begin{aligned}
+\Delta \widehat{\text{TestScore}}
+&= (640.3 - 4.93 \times 24) - (640.3 - 4.93 \times 21) \\
+&= -4.93 \times (24 - 21) \\
+&= -14.79
+\end{aligned}
+$$
+
+c.  
+
+$$
+\begin{aligned}
+\overline{\text{TestScore}}
+&= \hat{\beta}_0 + \hat{\beta}_1 \times \overline{\text{CS}} \\
+&= 640.3 - 4.93 \times 22.8 \\
+&= 527.896
+\end{aligned}
+$$
+
+d.  
+
+$$
+\begin{aligned}
+s_Y = \sqrt{\frac{1}{n - 1} TSS}
+&= \sqrt{\frac{1}{n - 1} \cdot \frac{SSR}{1 - R^2}} \\
+&= \sqrt{\frac{1}{n - 1} \cdot \frac{(n-2)SER^2}{1 - R^2}} \\
+&= \sqrt{\frac{1}{50 - 1} \cdot \frac{(50 - 2) \cdot (8.7)^2}{1 - 0.11}} \approx 9.1274
+\end{aligned}
+$$
+
+### Exercise 4.3
+
+a.  
+
+-   **Intercept:** A worker with €0 average monthly income has a
+    predicted average monthly expenditure of €710.7.
+-   **Slope:** AME is expected to increase by €8.8 for each additional
+    euro of income.
+
+b.  SER is in the same units as the dependent variable. That is, SER is
+    measured in euros (or dollars) per month.
+
+c.  $R^2$ is unit free.
+
+d.  If $AMI = 100$, then
+
+$$
+AME = 710.7 + 8.8 \times 100 = 1590.7
+$$ If $AMI = 200$, then
+
+$$
+AME = 710.7 + 8.8 \times 200 = 2470.7
+$$
+
+e.  No. The highest income in the sample is €1.5 million, and €2 million
+    is far outside the range of the sample data.
+
+f.  No. The distribution of earnings is positively skewed.
+
+### Exercise 4.7
+
+$$
+\begin{aligned}
+E\left(\hat{\beta}_0\right)
+&= E\left(\overline{Y} - \hat{\beta}_1 \overline{X}_1\right) \\
+&= E \left[ \left( \beta_0 + \beta_1 \overline{X}_1 + \frac{1}{n} \sum_{i=1}^{n} u_i \right) - \hat{\beta}_1 \overline{X}_1 \right] \\
+&= E \left[ \beta_0 + (\beta_1 - \hat{\beta}_1) \overline{X}_1 + \frac{1}{n} \sum_{i=1}^{n} u_i \right] \\
+&= E (\beta_0) + E \left\{ E \left[ (\beta_1 - \hat{\beta}_1) \overline{X}_1 \mid X_1 \right] \right\} + E \left(\frac{1}{n} \sum_{i=1}^{n} u_i\right) \\
+&= \beta_0 + E \left[ \overline{X}_1 \underbrace{E \left(\beta_1 - \hat{\beta}_1 \mid X_1\right)}_{=0} \right] + \frac{1}{n} \sum_{i=1}^{n} \underbrace{E(u_i)}_{=0} \\
+&= \beta_0
+\end{aligned}
+$$
+
+### Exercise 4.12
+
+a.  Note that
+
+$$
+\begin{aligned}
+    ESS
+    &= \sum_{i=1}^{n} (Y_i - \bar{Y})^2 \\
+    &= \sum_{i=1}^{n} (\hat{\beta}_0 + \hat{\beta}_1 X_i - \bar{Y})^2 \\
+    &= \sum_{i=1}^{n} [\hat{\beta}_1 (X_i - \bar{X})]^2 \\
+    &= \hat{\beta}_1^2 \sum_{i=1}^{n} (X_i - \bar{X})^2
+    \end{aligned}
+$$ Then
+
+$$
+\begin{aligned}
+    R^2 &= \frac{ESS}{TSS} \\
+    &= \frac{\hat{\beta}_1^2 \sum_{i=1}^{n} (X_i - \overline{X})^2}{\sum_{i=1}^{n} (Y_i - \overline{Y})^2} \\
+    &= \left[ \frac{\sum_{i=1}^{n} (X_i - \overline{X}) (Y_i - \overline{Y})}{\sum_{i=1}^{n} (X_i - \overline{X})^2} \right]^2
+    \cdot \frac{\sum_{i=1}^{n} (X_i - \overline{X})^2}{\sum_{i=1}^{n} (Y_i - \overline{Y})^2} \\
+    &= \frac{\left[\sum_{i=1}^{n} (X_i - \overline{X}) (Y_i - \overline{Y})\right]^2}
+    {\sum_{i=1}^{n} (X_i - \overline{X})^2 \sum_{i=1}^{n} (Y_i - \overline{Y})^2} \\
+    &= \left[ \frac{\sum_{i=1}^{n} (X_i - \overline{X}) (Y_i - \overline{Y})}
+    {\sqrt{\sum_{i=1}^{n} (X_i - \overline{X})^2} \sqrt{\sum_{i=1}^{n} (Y_i - \overline{Y})^2}} \right]^2 \\
+    &= \left[ \frac{\frac{1}{n-1} \sum_{i=1}^{n} (X_i - \overline{X}) (Y_i - \overline{Y})}
+    {\sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (X_i - \overline{X})^2}
+    \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (Y_i - \overline{Y})^2}} \right]^2 \\
+    &= \left[ \frac{s_{XY}}{s_X \cdot s_Y} \right]^2 \\
+    &= r_{XY}^2
+    \end{aligned}
+$$
+
+b.  Since $r_{XY} = r_{YX}$, the statement is true.
+
+c.  
+
+$$
+\begin{aligned}
+r_{XY} \cdot \frac{s_Y}{s_X} &= \frac{s_{XY}}{s_X \cdot s_Y} \cdot \frac{s_Y}{s_X} \\
+&= \frac{\frac{1}{n-1} \sum_{i=1}^{n} (X_i - \overline{X}) (Y_i - \overline{Y})}
+{\frac{1}{n-1} \sum_{i=1}^{n} (X_i - \overline{X})^2} \\
+&= \frac{\sum_{i=1}^{n} (X_i - \overline{X}) (Y_i - \overline{Y})}
+{\sum_{i=1}^{n} (X_i - \overline{X})^2} = \hat{\beta}_1.
+\end{aligned}
+$$ 
+
+
+### Exercise 5.2
+
+a.  The estimated gender wage gap is **\$1.78** per hour.
+
+b.  **Prepare**:
+
+$$
+\left\{\begin{aligned}
+    &H_0: \beta_{\text{Male}} = 0 \\
+    &H_1: \beta_{\text{Male}} \neq 0
+    \end{aligned}\right.
+$$ Let the significance level be $\alpha = 0.05$.
+
+**Calculate**:
+
+$$
+t^* = \frac{1.78 - 0}{0.29} \approx 6.14
+$$ $$
+p\text{-value} = 2 \Phi(-t^*) \approx 2 \Phi(-6.14) \approx 0
+$$ **Conclude**:
+
+```         
+Since $p$-value < 0.05, we reject $H_0$. There is significant evidence that the gender wage gap is different from 0.
+```
+
+c.  Confidence Interval:
+
+$$
+\hat{\beta}_{\text{Male}} \pm Z_{0.025} SE(\hat{\beta}_{\text{Male}}) = 1.78 \pm 1.96 \times 0.29 = [1.21, 2.35]
+$$
+
+d.  The sample average wage of women is
+
+$$
+\hat{\beta}_0 = 10.73 \quad \text{(in dollars per hour)}
+$$ The sample average wage of men is
+
+$$
+\hat{\beta}_0 + \hat{\beta}_{\text{Male}} = 10.73 + 1.78 = 12.51 \quad \text{(in dollars per hour)}
+$$
+
+e.  Regression equation:
+
+$$
+\begin{aligned}
+    \text{Wage}
+    &= (\hat{\beta}_0 + \hat{\beta}_{\text{Male}}) + (-\hat{\beta}_{\text{Male}}) \times \text{Female} \\
+    &= 12.51 - 1.78 \times \text{Female}, \quad R^2 = 0.09, \quad SER = 3.8
+    \end{aligned}
+$$
+
+### Exercise 5.5
+
+a.  The estimated gain from being in a small class is **13.9** points.
+    This is approximately 20% of the standard deviation in test scores,
+    representing a moderate increase.
+
+b.  **Prepare**:
+
+$$
+\left\{\begin{aligned}
+    &H_0: \beta_{\text{SmallClass}} = 0 \\
+    &H_1: \beta_{\text{SmallClass}} \neq 0
+    \end{aligned}\right.
+$$ Let the significance level be $\alpha = 0.05$.
+
+**Calculate**:
+
+$$
+t^* = \frac{13.9 - 0}{2.5} \approx 5.56
+$$ **Conclude**:
+
+```         
+Since $t^* > Z_{0.025} = 1.96$, we reject $H_0$. There is significant evidence that the estimated effect of class size on test scores is different from 0.
+```
+
+c.  Confidence Interval:
+
+$$
+\hat{\beta}_{\text{SmallClass}} \pm Z_{0.005} \cdot SE(\hat{\beta}_{\text{SmallClass}}) = 13.9 \pm 2.576 \times 2.5 = [7.46, 20.34]
+$$
+
+d.  Yes. Students were randomly assigned to small or regular classes, so
+    that $\text{SmallClass}$ is independent of characteristics of the
+    student, including those affecting $\text{TestScore}$, that is $u$.
+
+## Computer Exercises
+
+[(hprice.csv)](hprice.csv){target="_blank" rel="noopener"}
+
+``` r
+# remove pre-load data, and import package
+rm(list = ls())
+library(tidyverse)
+
+# set directory and import data
+house <- read.csv("data/hprice.csv")
+```
+
+```{r}
+#| echo: false
+
+rm(list = ls())
+library(tidyverse)
+library(here)
+
+house <- read.csv(here("data", "hprice.csv")) 
+```
+
+### House Price: Summary Statistics
+
+``` r
+summary(house$price)
+```
+
+```{r}
+#| echo: false        
+
+summary(house$price)
+```
+
+``` r
+hprice_ttest <- t.test(
+  house$price,
+  conf.level = 0.95
+)
+hprice_ttest$conf.int
+```
+
+```{r}
+#| echo: false        
+
+hprice_ttest <- t.test(
+  house$price,
+  conf.level = 0.95
+)
+hprice_ttest$conf.int
+```
+
+This confidence interval suggests that we are 95% confident that the
+true mean house price in the population falls between \$269,006 and
+\$307,609 (in \$1000 units). This means that, based on the sample data,
+the average price of houses in Boston in 1990 is likely within this
+range.
+
+### House Price: Average Price
+
+For the house built in colonial style:
+
+``` r
+house %>% 
+  filter(colonial == 1) %>% 
+  summarize(avg_hprice = mean(price))
+```
+
+```{r}
+#| echo: false        
+
+house %>% 
+  filter(colonial == 1) %>% 
+  summarize(avg_hprice = mean(price))
+```
+
+and for the house *not* built in colonial style:
+
+``` r
+house %>% 
+  filter(colonial == 0) %>% 
+  summarize(avg_hprice = mean(price))
+```
+
+```{r}
+#| echo: false        
+
+house %>% 
+  filter(colonial == 0) %>% 
+  summarize(avg_hprice = mean(price))
+```
+
+### House Price: Scatter Plot
+
+``` r
+ggplot(house, aes(x = sqrft, y = price)) +
+  geom_point() +
+  labs(
+    x = "house size (sqrft)", 
+    y = "house price (price)"
+  )
+```
+
+```{r}
+#| echo: false        
+
+ggplot(house, aes(x = sqrft, y = price)) +
+  geom_point() +
+  labs(
+    x = "house size (sqrft)", 
+    y = "house price (price)"
+  )
+```
+
+``` r
+cor(house$price, house$sqrft)
+```
+
+```{r}
+#| echo: false        
+
+cor(house$price, house$sqrft)
+```
+
+Because $\text{Corr}(price, \textit{sqrft}) > 0.7$, the strength of the
+relationship is strong. Also by inspecting the scatter plot, we can
+conclude that fitting a linear model would be reasonable.
+
+### House Price: Regression (1)
+
+Given the following specification:
+
+$$
+\textit{price}_i = \beta_0 + \beta_1 \textit{sqrft}_i + u_i
+$$ we propose the hypothesis:
+
+$$
+\left\{\begin{aligned}
+&H_0: \beta_1 = 0 \\
+&H_1: \beta_1 \neq 0
+\end{aligned}\right.
+$$
+
+``` r
+reg1 <- lm(
+  formula = price ~ sqrft,
+  data = house
+)
+summary(reg1)
+```
+
+```{r}
+#| echo: false        
+
+reg1 <- lm(
+  formula = price ~ sqrft,
+  data = house
+)
+summary(reg1)
+```
+
+From the regression result, we have the $p$-value of the coefficient of
+house size ($\textit{sqrft}$) is very small ($<5\%$), hence we reject
+the null hypothesis. There is significant evidence that the coefficient
+on house size is different from zero.
+
+### House Price: Regression (2)
+
+``` r
+reg2 <- lm(
+  formula = price ~ colonial,
+  data = house
+)
+reg2$coefficients
+```
+
+```{r}
+#| echo: false        
+
+reg2 <- lm(
+  formula = price ~ colonial,
+  data = house
+)
+reg2$coefficients
+```
+
+From the regression result, we have the estimated coefficients of
+$\textit{colonial}$ is same as colonial gap, which is the gap between
+two means in question (b).

@@ -1,0 +1,84 @@
+---
+title: "Week 1 Answers (0224)"
+---
+
+## Project
+
+1. Create an RStudio project inside a folder with proper names (e.g. TA_Session).  
+
+2. Create folders for R scripts and data.
+
+3. For the following questions, your code should follow the coding styles in the slides.
+
+::: {.callout-tip title="Hint"}
+It is recommended to create a new project different from last semester!
+:::
+
+## Assign Values
+
+Create two variables called `x` and `y`, and assign values `20260224` and `409`. Compute `x / y`.
+``` r
+x <- 20260224
+y <- 409
+print(x / y)
+```
+
+```{r}
+#| echo: false      
+
+x <- 20260224
+y <- 409
+print(x / y)
+```
+
+## Help
+
+Use the `help()` function to check docs, e.g. `data.frame()` or `mean()`.
+``` r
+help(data.frame)
+help(mean)
+```
+
+## Matrix and DataFrame
+
+1. Create a vector `name_vec` with 3 names James, Noc, and Monica.
+
+2. Create a vector `age_vec` that stores their age 25, 30, and 28.
+
+3. Create a 3 × 2 matrix `name_age_mat` with `name_vec` and `age_vec`, then print it in the console.
+
+4. Create a dataframe `name_age_df` using `name_vec` and `age_vec` with column names `name` annd `age`, then print it in the console.
+
+5. What’s the data type of `name_age_df` and `age_vec`?
+
+``` r
+name_vec <- c("James", "Noc", "Monica")
+age_vec <- c(25, 30, 28)
+
+name_age_mat <- matrix(c(name_vec, age_vec), nrow = 3)
+print(name_age_mat)
+class(name_age_mat)
+
+name_age_df <- data.frame(name = name_vec, 
+                          age = age_vec)
+print(name_age_df)
+class(name_age_df)
+```
+
+
+```{r}
+#| echo: false      
+
+name_vec <- c("James", "Noc", "Monica")
+age_vec <- c(25, 30, 28)
+
+name_age_mat <- matrix(c(name_vec, age_vec), nrow = 3)
+print(name_age_mat)
+class(name_age_mat)
+
+name_age_df <- data.frame(name = name_vec, 
+                          age = age_vec)
+print(name_age_df)
+class(name_age_df)
+```
+

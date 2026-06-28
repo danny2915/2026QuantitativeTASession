@@ -1,0 +1,9 @@
+---
+title: "Quiz 4 Answers"
+---
+
+```{=html}
+<iframe src="Quiz_4_Answer.pdf" width="100%" height="800" style="border:1px solid #ddd;"></iframe>
+[Open in new tab](Quiz_4_Answer.pdf){target=_blank rel="noopener"}
+ ·
+[Download PDF](Quiz_4_Answer.pdf)

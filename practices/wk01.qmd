@@ -1,0 +1,36 @@
+---
+title: "Week 1 Practices (0224)"
+---
+
+## Project
+
+1. Create an RStudio project inside a folder with proper names (e.g. TA_Session).  
+
+2. Create folders for R scripts and data.
+
+3. For the following questions, your code should follow the coding styles in the slides.
+
+::: {.callout-tip title="Hint"}
+It is recommended to create a new project different from last semester!
+:::
+
+## Assign Values
+
+Create two variables called `x` and `y`, and assign values `20260224` and `409`. Compute `x / y`.
+
+## Help
+
+Use the `help()` function to check docs, e.g. `data.frame()` or `mean()`.
+
+## Matrix and DataFrame
+
+1. Create a vector `name_vec` with 3 names James, Noc, and Monica.
+
+2. Create a vector `age_vec` that stores their age 25, 30, and 28.
+
+3. Create a 3 × 2 matrix `name_age_mat` with `name_vec` and `age_vec`, then print it in the console.
+
+4. Create a dataframe `name_age_df` using `name_vec` and `age_vec` with column names `name` annd `age`, then print it in the console.
+
+5. What’s the data type of `name_age_df` and `age_vec`?
+

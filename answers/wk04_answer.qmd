@@ -1,0 +1,323 @@
+---
+title: "Week 4 Answers (0317)"
+---
+
+## Medalist (金牌得主)
+
+Inori is practicing for the Chubu Regional Championships, a figure skating competition in Japan. Her coach, Tsukasa, records the result of each jump attempt every day during practice. The dataset contains:
+
+   - `date`: The date of the practice session.
+   - `jump`: The type of figure skating jump.
+   - `result`: The landing outcome of the jump attempt.
+
+On March 23, Inori caught a mild cold, and Tsukasa noticed that her landing performance seemed to be affected. Follow the instructions below to help Tsukasa test this hypothesis.
+
+0. Before you begin, complete the setup:
+
+   - Open the project you created for the TA Session by clicking on `.Rproj` (if you do not have one, create it).
+   - Open a new script and save in the script folder.
+   - Download the dataset `medalist.csv` and save it in the `data` folder. [(right click here)](medalist.csv){target=_blank rel="noopener"}  
+   - Call the package `tidyverse`.
+   - Create an `output` folder inside the project folder.
+
+1. Read `medalist.csv` and save it as `medalist_raw`.
+
+2. Create a variable called `cold_date` equal to `2026-03-23` as a `Date`.
+
+3. Create a new dataframe called `medalist_tidy` from `medalist_raw` with the following columns:
+
+   - Convert `date` column to `Date` type using `as.Date()`.
+   - Create `is_landing` column: `1` if the jump `result` is `Landing`, otherwise `0`.
+   - Convert `result` column type into factor with level order: `Fall`, `Touch down`, `Landing`.
+   - Create `is_after_cold` column: `"before_cold"` if the date is before Inori's cold, otherwise `"after_cold"`.
+   - Convert `is_after_cold` column type into factor with level order: `before_cold`, `after_cold`.
+
+::: {.callout-tip title="Note"}
+In steps 4-5, we create a histogram to show the distribution of how many jump Inori did each day.
+:::
+
+4. Create a dataframe called `medalist_daily` that summarizes how many jumps Inori did each day.
+
+::: {.callout-tip title="Hint"}
+Calculate the number of rows in each group `date` using `summarise(jump_times = n())`
+:::
+
+5. Make a histogram called `medalist_hist_plot` that shows the distribution of `jump_times` and print it with the settings: `binwidth = 5`, `fill = "steelblue"`, `color = "black"`.
+
+::: {.callout-tip title="Note"}
+In steps 6-7, we create a bar plot to compare the performance of Inori's jump by calculate the count of the jumping results before and after the cold.
+:::
+
+6. Make a bar plot called `medalist_bar_plot` and print it with the settings: 
+
+   - x-axis: `result`
+   - fill: `is_after_cold`
+   - Labels: title `Jump results`, x `Result`, y `Count`.
+
+7. Make a faceted bar plot by jump called `medalist_facet_bar_plot` with setting in Step 6 with title, `Jump results (by jump type)`.
+
+::: {.callout-tip title="Note"}
+In steps 8-10, we create a line graph to compare the performance of Inori's jump by calculate the landing success rate of the jumps before and after the cold.
+:::
+
+8. Make a line plot called `medalist_line_plot` showing daily average landing success rate and print it with the settings:
+
+   - Lines in plot: `linewidth = 0.7`, `color = "steelblue"`.
+   - Add a vertical line at `cold_date` in color `lightcoral`.
+   - Add a horizontal line at `y = 0.8` in color `lightcoral`.
+   - Labels: title `"Daily average landing success rate"`, x `"Date"`, y `"Success rate"`.
+
+9. Create a dataframe `medalist_success_rate_by_date_jump` that summarizes the average landing success rate per jump each at each date.
+
+10. Make a faceted line plot by jump called `medalist_facet_line_plot` using `medalist_success_rate_by_date_jump` and print it with the settings:
+
+   - Lines in plot: `linewidth = 0.7`, `color = "steelblue"`.
+   - Add a vertical line at `cold_date` in color `lightcoral`.
+   - Add a horizontal line at `y = 0.8` in color `lightcoral`.
+   - Labels: title `"Daily landing success rate (by jump)"`, x `"Date"`, y `"Success rate"`.
+
+11. Save all five plots into an `output` folder as `png` files using `ggsave()` with the settings: 
+`width = 12`, `height = 8`, `dpi = 300`. Additionally, save an extra graph `medalist_facet_line_plot_dpi150` for `medalist_facet_line_plot` with setting `width = 12`, `height = 8`, `dpi = 150`. Do you see the differences between these two graphs? 
+
+12. Based on your plots, answer the questions:
+
+- Did the landing success rate appear to change after `cold_date`?
+- Are some jump types less affected than others?
+
+``` r
+library(tidyverse)
+
+cold_date <- as.Date("2026-03-23")
+
+medalist_raw <- read.csv("data/medalist.csv") 
+
+medalist_tidy <- medalist_raw %>%
+  mutate(date = as.Date(date)) %>%
+  mutate(is_landing = if_else(result == "Landing", 1, 0)) %>%
+  mutate(result = factor(result, levels = c("Fall", "Touch down", "Landing"))) %>%
+  mutate(is_after_cold = if_else(date < cold_date, "before_cold", "after_cold")) %>%
+  mutate(is_after_cold = factor(is_after_cold, levels = c("before_cold", "after_cold")))
+
+medalist_daily <- medalist_tidy %>%
+  group_by(date) %>%
+  summarise(jump_times = n())
+
+medalist_hist_plot <- medalist_daily %>%
+  ggplot(aes(x = jump_times)) +
+  geom_histogram(binwidth = 5,
+                 fill = "steelblue",
+                 color = "black") 
+
+print(medalist_hist_plot)
+
+medalist_bar_plot <- medalist_tidy %>%
+  ggplot(aes(x = result, fill = is_after_cold)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Jump results", x = "Result", y = "Count")
+
+print(medalist_bar_plot)
+
+
+medalist_facet_bar_plot <- medalist_tidy %>%
+  ggplot(aes(x = result, fill = is_after_cold)) +
+  geom_bar(position =  "dodge") +
+  facet_wrap(~ jump) +
+  labs(title = "Jump results (by jump type)", x = "Result", y = "Count")
+
+print(medalist_facet_bar_plot) 
+
+medalist_line_plot <- medalist_tidy %>%
+  ggplot(aes(x = date, y = is_landing)) +
+  geom_line(stat = "summary",
+            fun = "mean",
+            linewidth = 0.7,
+            color = "steelblue") +
+  geom_vline(xintercept = cold_date, color = "lightcoral") +
+  geom_hline(yintercept = 0.8, color = "lightcoral") +
+  labs(title = "Daily average landing success rate",
+       x = "Date", y = "Success rate")
+
+print(medalist_line_plot)
+
+medalist_success_rate_by_date_jump <- medalist_tidy %>%
+  group_by(date, jump) %>%
+  summarise(success_rate = mean(is_landing)) %>%
+  ungroup()
+
+medalist_facet_line_plot <- medalist_success_rate_by_date_jump %>%
+  ggplot(aes(x = date, y = success_rate)) +
+  geom_line(linewidth = 0.7,
+            color = "steelblue") +
+  geom_vline(xintercept = cold_date, color = "lightcoral") +
+  geom_hline(yintercept = 0.8, color = "lightcoral") +
+  facet_wrap(~ jump) +
+  labs(title = "Daily landing success rate (by jump)",
+       x = "Date", y = "Success rate")
+
+print(medalist_facet_line_plot)
+
+ggsave(filename = "medalist_hist_plot.png",
+       plot = medalist_hist_plot,
+       path = "output",
+       width = 12,
+       height = 8,
+       dpi = 300)
+
+ggsave(filename = "medalist_bar_plot.png",
+       plot = medalist_bar_plot,
+       path = "output",
+       width = 12,
+       height = 8,
+       dpi = 300)
+
+ggsave(filename = "medalist_facet_bar_plot.png",
+       plot = medalist_facet_bar_plot,
+       path = "output",
+       width = 12,
+       height = 8,
+       dpi = 300)
+
+ggsave(filename = "medalist_line_plot.png",
+       plot = medalist_line_plot,
+       path = "output",
+       width = 12,
+       height = 8,
+       dpi = 300)
+
+ggsave(filename = "medalist_facet_line_plot.png",
+       plot = medalist_facet_line_plot,
+       path = "output",
+       width = 12,
+       height = 8,
+       dpi = 300)
+       
+ggsave(filename = "medalist_facet_line_plot_dpi150.png",
+       plot = medalist_facet_line_plot,
+       path = "output",
+       width = 12,
+       height = 8,
+       dpi = 150)
+```
+
+```{r}
+#| echo: false      
+
+library(tidyverse)
+library(here)
+
+cold_date <- as.Date("2026-03-23")
+
+medalist_raw <- read.csv(here("data", "medalist.csv")) 
+
+medalist_tidy <- medalist_raw %>%
+  mutate(date = as.Date(date)) %>%
+  mutate(is_landing = if_else(result == "Landing", 1, 0)) %>%
+  mutate(result = factor(result, levels = c("Fall", "Touch down", "Landing"))) %>%
+  mutate(is_after_cold = if_else(date < cold_date, "before_cold", "after_cold")) %>%
+  mutate(is_after_cold = factor(is_after_cold, levels = c("before_cold", "after_cold")))
+
+
+medalist_daily <- medalist_tidy %>%
+  group_by(date) %>%
+  summarise(jump_times = n())
+
+medalist_hist_plot <- medalist_daily %>%
+  ggplot(aes(x = jump_times)) +
+  geom_histogram(binwidth = 5,
+                 fill = "steelblue",
+                 color = "black") 
+
+print(medalist_hist_plot)
+
+medalist_bar_plot <- medalist_tidy %>%
+  ggplot(aes(x = result, fill = is_after_cold)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Jump results", x = "Result", y = "Count") + 
+  theme_classic() +
+  theme(
+    axis.text.x = element_text(size = 16),
+    legend.text = element_text(size = 16),
+    legend.title = element_text(size = 14)
+  )
+
+print(medalist_bar_plot)
+
+medalist_facet_bar_plot <- medalist_tidy %>%
+  ggplot(aes(x = result, fill = is_after_cold)) +
+  geom_bar(position =  "dodge") +
+  facet_wrap(~ jump) +
+  labs(title = "Jump results (by jump type)", x = "Result", y = "Count")
+
+print(medalist_facet_bar_plot) 
+
+
+medalist_line_plot <- medalist_tidy %>%
+  ggplot(aes(x = date, y = is_landing)) +
+  geom_line(stat = "summary",
+             fun = "mean",
+             linewidth = 0.7,
+             color = "steelblue") +
+  geom_vline(xintercept = cold_date, color = "lightcoral") +
+  geom_hline(yintercept = 0.8, color = "lightcoral") +
+  labs(title = "Daily average landing success rate",
+       x = "Date", y = "Success rate")
+
+print(medalist_line_plot)
+
+medalist_success_rate_by_date_jump <- medalist_tidy %>%
+  group_by(date, jump) %>%
+  summarise(success_rate = mean(is_landing)) %>%
+  ungroup()
+
+medalist_facet_line_plot <- medalist_success_rate_by_date_jump %>%
+  ggplot(aes(x = date, y = success_rate)) +
+  geom_line(linewidth = 0.7,
+            color = "steelblue") +
+  geom_vline(xintercept = cold_date, color = "lightcoral") +
+  geom_hline(yintercept = 0.8, color = "lightcoral") +
+  facet_wrap(~ jump) +
+  labs(title = "Daily landing success rate (by jump)",
+       x = "Date", y = "Success rate")
+
+print(medalist_facet_line_plot)
+
+ggsave(filename = "medalist_hist_plot.png",
+       plot = medalist_hist_plot,
+       path = here("output"),
+       width = 12,
+       height = 8,
+       dpi = 300)
+
+ggsave(filename = "medalist_bar_plot.png",
+       plot = medalist_bar_plot,
+       path = here("output"),
+       width = 12,
+       height = 8,
+       dpi = 300)
+
+ggsave(filename = "medalist_facet_bar_plot.png",
+       plot = medalist_facet_bar_plot,
+       path = here("output"),
+       width = 12,
+       height = 8,
+       dpi = 300)
+
+ggsave(filename = "medalist_line_plot.png",
+       plot = medalist_line_plot,
+       path = here("output"),
+       width = 12,
+       height = 8,
+       dpi = 300)
+
+ggsave(filename = "medalist_facet_line_plot.png",
+       plot = medalist_facet_line_plot,
+       path = here("output"),
+       width = 12,
+       height = 8,
+       dpi = 300)
+```
+
+[Full Performance Youtube Link](https://www.youtube.com/watch?v=ym7lsDjAa44)
+![](medalist.gif){width="960" fig-align="center" fig-alt="Animated welcome"}
+
+

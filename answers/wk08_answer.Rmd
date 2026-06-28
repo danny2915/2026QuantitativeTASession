@@ -1,0 +1,118 @@
+---
+title: "Week 8 Answers (0414)"
+output: html_document
+date: "2026-04-14"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Step 2
+Imports the package `tidyverse` and the dataset `medalist.csv`. 
+
+```{r}
+
+library(tidyverse)
+library(here)
+
+medalist_raw <- read.csv(here("data", "medalist.csv")) 
+```
+
+## Step 3
+Create `medalist_tidy`.
+
+```{r}
+
+cold_date <- as.Date("2026-03-23")
+
+medalist_tidy <- medalist_raw %>%
+  mutate(date = as.Date(date)) %>%
+  mutate(is_landing = if_else(result == "Landing", 1, 0)) %>%
+  mutate(result = factor(result, levels = c("Fall", "Touch down", "Landing"))) %>%
+  mutate(is_after_cold = if_else(date < cold_date, "before_cold", "after_cold")) %>%
+  mutate(is_after_cold = factor(is_after_cold, levels = c("before_cold", "after_cold")))
+```
+
+## Step 4
+Create `medalist_daily` and print `medalist_hist_plot`.
+
+```{r}
+
+medalist_daily <- medalist_tidy %>%
+  group_by(date) %>%
+  summarise(jump_times = n())
+
+medalist_hist_plot <- medalist_daily %>%
+  ggplot(aes(x = jump_times)) +
+  geom_histogram(binwidth = 5,
+                 fill = "steelblue",
+                 color = "black") 
+
+print(medalist_hist_plot)
+```
+
+## Step 5
+Create and print `medalist_bar_plot` and `medalist_facet_bar_plot`.
+
+```{r}
+
+medalist_bar_plot <- medalist_tidy %>%
+  ggplot(aes(x = result, fill = is_after_cold)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Jump results", x = "Result", y = "Count") + 
+  theme_classic() +
+  theme(
+    axis.text.x = element_text(size = 16),
+    legend.text = element_text(size = 16),
+    legend.title = element_text(size = 14)
+  )
+
+print(medalist_bar_plot)
+
+medalist_facet_bar_plot <- medalist_tidy %>%
+  ggplot(aes(x = result, fill = is_after_cold)) +
+  geom_bar(position =  "dodge") +
+  facet_wrap(~ jump) +
+  labs(title = "Jump results (by jump type)", x = "Result", y = "Count")
+
+print(medalist_facet_bar_plot) 
+
+```
+
+## Step 6
+Create and print `medalist_line_plot` and `medalist_facet_line_plot`.
+
+```{r}
+
+medalist_line_plot <- medalist_tidy %>%
+  ggplot(aes(x = date, y = is_landing)) +
+  geom_line(stat = "summary",
+             fun = "mean",
+             linewidth = 0.7,
+             color = "steelblue") +
+  geom_vline(xintercept = cold_date, color = "lightcoral") +
+  geom_hline(yintercept = 0.8, color = "lightcoral") +
+  labs(title = "Daily average landing success rate",
+       x = "Date", y = "Success rate")
+
+print(medalist_line_plot)
+
+medalist_success_rate_by_date_jump <- medalist_tidy %>%
+  group_by(date, jump) %>%
+  summarise(success_rate = mean(is_landing)) %>%
+  ungroup()
+
+medalist_facet_line_plot <- medalist_success_rate_by_date_jump %>%
+  ggplot(aes(x = date, y = success_rate)) +
+  geom_line(linewidth = 0.7,
+            color = "steelblue") +
+  geom_vline(xintercept = cold_date, color = "lightcoral") +
+  geom_hline(yintercept = 0.8, color = "lightcoral") +
+  facet_wrap(~ jump) +
+  labs(title = "Daily landing success rate (by jump)",
+       x = "Date", y = "Success rate")
+
+print(medalist_facet_line_plot)
+```
+
