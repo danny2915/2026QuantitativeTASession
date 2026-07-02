@@ -1,15 +1,15 @@
 ---
-title: "2026 Spring Econometrics TA Session"
+title: "2026 基礎數量方法 TA Session"
 author: "Danny Po-Hsien Kang"
 date: "2026-02-24"
 ---
 
-Welcome! Use the sidebar to open weekly **Slides**, **Practices** and **Answers**
+Welcome! Use the sidebar to open the current **Slides**, **Practice**, and **Example R code**.
 
-Answers to the practice will be published after each TA Session.
+Additional materials will be added after each TA Session.
 
-**Sending email**: r13323002\@ntu.edu.tw (mail title including \[Econometrics TA\]) \
-**TA Office hours**: Tuesday, 3:30-4:20 p.m. at SSB. (社會科學院) Room 645.
+**Sending email**: r13323002\@ntu.edu.tw (mail title including \[基礎數量方法 TA\]) \
+**TA Office hours**: Tuesday, 3:30-4:20 p.m. at SSB. Room 645.
 
 [2025 Fall Statistics TA Session Website](https://danny2915.github.io/2025StatTASession/index.html)
 

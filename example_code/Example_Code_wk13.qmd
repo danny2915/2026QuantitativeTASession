@@ -1,7 +1,0 @@
----
-title: "Week 13 Example R Code (0519)"
----
-
-Right click to download:
-
-- [wk13_example_code.Rmd](wk13_example_code.Rmd)

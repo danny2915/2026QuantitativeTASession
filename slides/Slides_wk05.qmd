@@ -1,9 +1,0 @@
----
-title: "Week 5 Slides (0324)"
----
-
-```{=html}
-<iframe src="Slides_wk05.pdf" width="100%" height="800" style="border:1px solid #ddd;"></iframe>
-[Open in new tab](Slides_wk05.pdf){target=_blank rel="noopener"}
- ·
-[Download PDF](Slides_wk05.pdf)

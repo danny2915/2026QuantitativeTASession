@@ -4,43 +4,40 @@ project:
   type: website
   render:
     - index.qmd
-    - slides/*.qmd
-    - practices/*.qmd
-    - answers/*.qmd
-    - example_code/*.qmd
-    - homework/*.qmd
-    - quiz/*.qmd
+    - slides/Slides_wk01.qmd
+    - practices/wk01.qmd
+    # - answers/wk01_answer.qmd
+    - example_code/Example_Code_wk01.qmd
   resources:
-    - slides/**/*.pdf
-    - example_code/**/*.R
-    - quiz/**/*.pdf
+    - slides/Slides_wk01.pdf
+    - example_code/wk01_example_code.R
     - assets/audio/**
 
 website:
-  site-url: https://danny2915.github.io/<NEW_REPO_NAME>/
-  title: "基礎數量方法 TA Session"
+  site-url: https://danny2915.github.io/2026QuantitativeTASession/
+  title: "2026 基礎數量方法 TA Session"
   navbar: false
   page-navigation: true
   search: false
 
   sidebar:
-    style: docked       # or "floating"
+    style: docked
     collapse-level: 1
     contents:
       - text: "Home"
         file: index.qmd
       - section: "Slides"
-        contents: "slides/*.qmd"
+        contents:
+          - slides/Slides_wk01.qmd
       - section: "Example R code"
-        contents: "example_code/*.qmd"
+        contents:
+          - example_code/Example_Code_wk01.qmd
       - section: "Practices"
-        contents: "practices/*.qmd"
-      - section: "Practice Answers"
-        contents: "answers/*.qmd"
-      - section: "Homework Solutions"
-        contents: "homework/*.qmd"
-      - section: "Quizzes"
-        contents: "quiz/*.qmd"
+        contents:
+          - practices/wk01.qmd
+      # - section: "Practice Answers"
+      #   contents:
+      #     - answers/wk01_answer.qmd
 
 format:
   html:

@@ -1,7 +1,0 @@
----
-title: "Week 3 Example R Code (0310)"
----
-
-Right click to download:
-
-- [wk03_example_code.R](wk03_example_code.R)

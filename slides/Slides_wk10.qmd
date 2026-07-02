@@ -1,9 +1,0 @@
----
-title: "Week 10 Slides (0428)"
----
-
-```{=html}
-<iframe src="Slides_wk10.pdf" width="100%" height="800" style="border:1px solid #ddd;"></iframe>
-[Open in new tab](Slides_wk10.pdf){target=_blank rel="noopener"}
- ·
-[Download PDF](Slides_wk10.pdf)

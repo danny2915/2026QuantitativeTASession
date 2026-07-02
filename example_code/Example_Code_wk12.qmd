@@ -1,7 +1,0 @@
----
-title: "Week 12 Example R Code (0512)"
----
-
-Right click to download:
-
-- [wk12_example_code.Rmd](wk12_example_code.Rmd)

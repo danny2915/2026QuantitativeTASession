@@ -1,7 +1,0 @@
----
-title: "Week 7 Example Code (0407)"
----
-
-Right click to download:
-
-- [wk07_example_code.R](wk07_example_code.R)

@@ -1,7 +1,0 @@
----
-title: "Week 8 Example R Code (0414)"
----
-
-Right click to download:
-
-- [wk08_example_code.Rmd](wk08_example_code.Rmd)
