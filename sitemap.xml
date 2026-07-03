@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://danny2915.github.io/2026QuantitativeTASession/example_code/Example_Code_wk01.html</loc>
-    <lastmod>2026-07-03T07:42:21.208Z</lastmod>
+    <loc>https://danny2915.github.io/2026QuantitativeTASession/homework/hw1_answer.html</loc>
+    <lastmod>2026-07-03T08:35:12.989Z</lastmod>
+  </url>
+  <url>
+    <loc>https://danny2915.github.io/2026QuantitativeTASession/practices/wk01.html</loc>
+    <lastmod>2026-07-03T06:39:30.283Z</lastmod>
+  </url>
+  <url>
+    <loc>https://danny2915.github.io/2026QuantitativeTASession/index.html</loc>
+    <lastmod>2026-07-03T07:50:03.165Z</lastmod>
   </url>
   <url>
     <loc>https://danny2915.github.io/2026QuantitativeTASession/slides/Slides_wk01.html</loc>
     <lastmod>2026-07-03T06:45:03.034Z</lastmod>
   </url>
   <url>
-    <loc>https://danny2915.github.io/2026QuantitativeTASession/index.html</loc>
-    <lastmod>2026-07-02T18:06:41.411Z</lastmod>
-  </url>
-  <url>
-    <loc>https://danny2915.github.io/2026QuantitativeTASession/practices/wk01.html</loc>
-    <lastmod>2026-07-03T06:39:30.283Z</lastmod>
+    <loc>https://danny2915.github.io/2026QuantitativeTASession/example_code/Example_Code_wk01.html</loc>
+    <lastmod>2026-07-03T07:42:21.208Z</lastmod>
   </url>
 </urlset>
