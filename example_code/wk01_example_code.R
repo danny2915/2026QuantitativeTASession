@@ -73,4 +73,9 @@
   help(mean)
   help(sd)
   ?mean
+  
+  
+# 5. Read CSV: `read.csv()`
+  
+  read.csv("data/earthquakes.csv")
 
