@@ -13,12 +13,12 @@
   {
     "objectID": "slides/Slides_wk01.html",
     "href": "slides/Slides_wk01.html",
-    "title": "Week 1 Slides (0224)",
+    "title": "Week 1 Slides (0703)",
     "section": "",
     "text": "Open in new tab · Download PDF",
     "crumbs": [
       "Slides",
-      "Week 1 Slides (0224)"
+      "Week 1 Slides (0703)"
     ]
   },
   {
@@ -34,56 +34,56 @@
   {
     "objectID": "practices/wk01.html",
     "href": "practices/wk01.html",
-    "title": "Week 1 Practices (0224)",
+    "title": "Week 1 Practices (0703)",
     "section": "",
-    "text": "Create an RStudio project inside a folder with proper names (e.g. TA_Session).\nCreate folders for R scripts and data.\nFor the following questions, your code should follow the coding styles in the slides.\n\n\n\n\n\n\n\nHint\n\n\n\nIt is recommended to create a new project different from last semester!",
+    "text": "Download R and R Studio.\nOpen the R Studio.",
     "crumbs": [
       "Practices",
-      "Week 1 Practices (0224)"
+      "Week 1 Practices (0703)"
+    ]
+  },
+  {
+    "objectID": "practices/wk01.html#download-r",
+    "href": "practices/wk01.html#download-r",
+    "title": "Week 1 Practices (0703)",
+    "section": "",
+    "text": "Download R and R Studio.\nOpen the R Studio.",
+    "crumbs": [
+      "Practices",
+      "Week 1 Practices (0703)"
     ]
   },
   {
     "objectID": "practices/wk01.html#project",
     "href": "practices/wk01.html#project",
-    "title": "Week 1 Practices (0224)",
-    "section": "",
-    "text": "Create an RStudio project inside a folder with proper names (e.g. TA_Session).\nCreate folders for R scripts and data.\nFor the following questions, your code should follow the coding styles in the slides.\n\n\n\n\n\n\n\nHint\n\n\n\nIt is recommended to create a new project different from last semester!",
+    "title": "Week 1 Practices (0703)",
+    "section": "2 Project",
+    "text": "2 Project\n\nCreate an RStudio project inside a folder with proper names (e.g. TA_Session).\nCreate folders for R scripts and data.\nFor the following questions, your code should follow the coding styles in the slides.",
     "crumbs": [
       "Practices",
-      "Week 1 Practices (0224)"
+      "Week 1 Practices (0703)"
     ]
   },
   {
     "objectID": "practices/wk01.html#assign-values",
     "href": "practices/wk01.html#assign-values",
-    "title": "Week 1 Practices (0224)",
-    "section": "2 Assign Values",
-    "text": "2 Assign Values\nCreate two variables called x and y, and assign values 20260224 and 409. Compute x / y.",
+    "title": "Week 1 Practices (0703)",
+    "section": "3 Assign Values",
+    "text": "3 Assign Values\nCreate two variables called x and y, and assign values 12345678 and 14593. Compute x / y.",
     "crumbs": [
       "Practices",
-      "Week 1 Practices (0224)"
+      "Week 1 Practices (0703)"
     ]
   },
   {
-    "objectID": "practices/wk01.html#help",
-    "href": "practices/wk01.html#help",
-    "title": "Week 1 Practices (0224)",
-    "section": "3 Help",
-    "text": "3 Help\nUse the help() function to check docs, e.g. data.frame() or mean().",
+    "objectID": "practices/wk01.html#read-csv",
+    "href": "practices/wk01.html#read-csv",
+    "title": "Week 1 Practices (0703)",
+    "section": "4 Read CSV",
+    "text": "4 Read CSV\n\nDownload the dataset (right click here) and save it in the data folder.\nInstall and call the package tidyverse.\nRead earthquakes.csv and save it as earthquakes_raw.\nTake a look of earthquakes_raw by clicking it from Rstudio the enviornment.",
     "crumbs": [
       "Practices",
-      "Week 1 Practices (0224)"
-    ]
-  },
-  {
-    "objectID": "practices/wk01.html#matrix-and-dataframe",
-    "href": "practices/wk01.html#matrix-and-dataframe",
-    "title": "Week 1 Practices (0224)",
-    "section": "4 Matrix and DataFrame",
-    "text": "4 Matrix and DataFrame\n\nCreate a vector name_vec with 3 names James, Noc, and Monica.\nCreate a vector age_vec that stores their age 25, 30, and 28.\nCreate a 3 × 2 matrix name_age_mat with name_vec and age_vec, then print it in the console.\nCreate a dataframe name_age_df using name_vec and age_vec with column names name annd age, then print it in the console.\nWhat’s the data type of name_age_df and age_vec?",
-    "crumbs": [
-      "Practices",
-      "Week 1 Practices (0224)"
+      "Week 1 Practices (0703)"
     ]
   }
 ]
