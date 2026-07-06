@@ -1,35 +1,89 @@
 [
   {
-    "objectID": "homework/hw1_answer.html",
-    "href": "homework/hw1_answer.html",
-    "title": "Homework 1 Answers",
+    "objectID": "answers/wk01_answer.html",
+    "href": "answers/wk01_answer.html",
+    "title": "Week 1 Answers (0703)",
     "section": "",
-    "text": "If you find any typos or errors, please feel free to contact me via email at r13323002@ntu.edu.tw. I would appreciate it and will correct the solution to prevent any misunderstandings.\nIf you?e having trouble understanding the code, don? hesitate to ask me for help. I?l do my best to assist you during office hours or after the TA session.",
+    "text": "Download R and R Studio.\nOpen the R Studio.",
     "crumbs": [
-      "Homework Solutions",
-      "Homework 1 Answers"
+      "Practice Answers",
+      "Week 1 Answers (0703)"
     ]
   },
   {
-    "objectID": "homework/hw1_answer.html#computer-exercises",
-    "href": "homework/hw1_answer.html#computer-exercises",
-    "title": "Homework 1 Answers",
-    "section": "1 Computer Exercises",
-    "text": "1 Computer Exercises\n(census.csv)\n# clear the memory and import package\nrm(list = ls())\nlibrary(tidyverse)\n\n# import data\ncensus &lt;- read.csv(\"census.csv\")\n\n1.1 Summary Statistics Table\nsummary_table &lt;- data.frame(\n  mean = c(\n    mean(census$total_personal_income, na.rm = TRUE),\n    mean(census$total_family_income, na.rm = TRUE),\n    mean(census$age, na.rm = TRUE)\n  ),\n  sd = c(\n    sd(census$total_personal_income, na.rm = TRUE),\n    sd(census$total_family_income, na.rm = TRUE),\n    sd(census$age, na.rm = TRUE)\n  ),\n  min = c(\n    min(census$total_personal_income, na.rm = TRUE),\n    min(census$total_family_income, na.rm = TRUE),\n    min(census$age, na.rm = TRUE)\n  ),\n  q25 = c(\n    quantile(census$total_personal_income, 0.25, na.rm = TRUE),\n    quantile(census$total_family_income, 0.25, na.rm = TRUE),\n    quantile(census$age, 0.25, na.rm = TRUE)\n  ),\n  median = c(\n    median(census$total_personal_income, na.rm = TRUE),\n    median(census$total_family_income, na.rm = TRUE),\n    median(census$age, na.rm = TRUE)\n  ),\n  q75 = c(\n    quantile(census$total_personal_income, 0.75, na.rm = TRUE),\n    quantile(census$total_family_income, 0.75, na.rm = TRUE),\n    quantile(census$age, 0.75, na.rm = TRUE)\n  ),\n  max = c(\n    max(census$total_personal_income, na.rm = TRUE),\n    max(census$total_family_income, na.rm = TRUE),\n    max(census$age, na.rm = TRUE)\n  ),\n  row.names = c(\"total_personal_income\", \"total_family_income\", \"age\")\n)\n\nround(summary_table, 2)\n\n\n                          mean       sd   min   q25 median   q75    max\ntotal_personal_income 29081.72 46089.29 -4400  5900  17750 37000 456000\ntotal_family_income   57410.98 70732.06     0 21500  43000 70700 892050\nage                      35.30    21.81     0    17     35    51     93\n\n\n\n\n1.2 Distribution of Total Personal Income\ncensus_income &lt;- census[!is.na(census$total_personal_income), ]\n\nggplot(census_income, aes(x = total_personal_income)) +\n  geom_histogram(binwidth = 10000, fill = \"steelblue\", color = \"black\") +\n  labs(\n    x = \"Total Personal Income\",\n    y = \"Frequency\",\n    title = \"Distribution of Total Personal Income\"\n  ) +\n  theme(plot.title = element_text(hjust = 0.5))\n\n\n\n\n\n\n\n\n\nThe distribution of total personal income is strongly right-skewed. Most observations are concentrated in the lower income ranges, especially from 0 to about 40{,}000. There are also several high-income observations, with the maximum equal to 456{,}000, which appear as potential outliers.\n\n\n1.3 Age and Total Personal Income\nggplot(census_income, aes(x = age, y = total_personal_income)) +\n  geom_point(color = \"steelblue\") +\n  labs(\n    x = \"Age\",\n    y = \"Total Personal Income\",\n    title = \"Age and Total Personal Income\"\n  ) +\n  theme(plot.title = element_text(hjust = 0.5))\n\n\n\n\n\n\n\n\n\nThere appears to be a weak positive relationship between age and personal income. The points are widely scattered, so the association is not strong.\n\n\n1.4 Personal Income by Sex\nggplot(census_income, aes(x = sex, y = total_personal_income)) +\n  geom_boxplot(fill = \"steelblue\") +\n  labs(\n    x = \"Sex\",\n    y = \"Total Personal Income\",\n    title = \"Total Personal Income by Sex\"\n  ) +\n  theme(plot.title = element_text(hjust = 0.5))\n\n\n\n\n\n\n\n\n\nThe male group has a higher median personal income. The male group also exhibits greater overall variability, with a wider interquartile range and more extreme high-income observations.\n\n\n1.5 Sex and Race Contingency Table\nsex_race_table &lt;- table(census$sex, census$race_general)\nsex_race_table_withsum &lt;- addmargins(sex_race_table)\nsex_race_table_withsum\n\n\n        \n         American Indian or Alaska Native Black Chinese Japanese Other\n  Female                                2    32       6        0    12\n  Male                                  1    39       2        1    13\n  Sum                                   3    71       8        1    25\n        \n         Other Asian or Pacific Islander Two major races White Sum\n  Female                               5               5   170 232\n  Male                                 8              11   193 268\n  Sum                                 13              16   363 500\n\n\nggplot(census, aes(x = race_general, fill = sex)) +\n  geom_bar(position = \"dodge\") +\n  coord_flip() +\n  labs(\n    x = \"General Race\",\n    y = \"Headcount\",\n    fill = \"Sex\",\n    title = \"Headcount by Sex and Race\"\n  ) +\n  theme(plot.title = element_text(hjust = 0.5))\n\n\n\n\n\n\n\n\n\nThe largest race category in this sample is White for both sexes. The bar plot shows that male and female counts are broadly similar within most race categories, though males are slightly more numerous in the full sample.",
+    "objectID": "answers/wk01_answer.html#download-r",
+    "href": "answers/wk01_answer.html#download-r",
+    "title": "Week 1 Answers (0703)",
+    "section": "",
+    "text": "Download R and R Studio.\nOpen the R Studio.",
     "crumbs": [
-      "Homework Solutions",
-      "Homework 1 Answers"
+      "Practice Answers",
+      "Week 1 Answers (0703)"
     ]
   },
   {
-    "objectID": "homework/hw1_answer.html#textbook-exercises",
-    "href": "homework/hw1_answer.html#textbook-exercises",
-    "title": "Homework 1 Answers",
-    "section": "2 Textbook Exercises",
-    "text": "2 Textbook Exercises\n\n2.1 Question 1.4\n\nThe research question is: “Do asthmatic patients who practice the Buteyko method experience improvement in their condition?”\nThe cases are 600 adult patients aged 18–69 years diagnosed and currently treated for asthma.\nThe variables are whether or not the patient practiced the Buteyko method (categorical) and measures of quality of life, activity, asthma symptoms, and medication reduction of the patients (categorical, ordinal). It may also be reasonable to treat the ratings on a scale of 0 to 10 as discrete numerical variables.\n\n\n\n2.2 Question 1.10\n\nEach row of the data matrix represents a participant in the survey.\nThere are 1,691 participants in the survey.\nThe table below lists the types of variables included in the study:\n\n\n\n\nVariable\nType\n\n\n\n\nsex\ncategorical\n\n\nage\nnumerical, continuous\n\n\nmaritalStatus\ncategorical\n\n\ngrossIncome\nordinal*\n\n\nsmoke\ncategorical\n\n\namtWeekends\nnumerical, discrete\n\n\namtWeekdays\nnumerical, discrete\n\n\n\n* Note that income is a continuous numerical variable, but in this survey, it is recorded as an ordinal variable.\n\n\n2.3 Question 1.22\n\nObservational.\n\nNo. Because the study is observational, we cannot infer causation.\n\nPossible confounders: caffeine intake and lack of sleep. Either could explain the observed association between stress and muscle cramps (e.g., students may cramp due to increased caffeine use or insufficient sleep).\n\n\n\n2.4 Question 1.38\n\nSimple random sampling: effective – gives every household equal probability of selection.\n\nStratified sampling: effective – neighborhoods are distinct; stratifying ensures sampling from each neighborhood.\n\nCluster sampling: not effective – sampling whole neighborhoods would miss households from some areas, and neighborhoods differ greatly.\n\nMulti-stage sampling: suffers from the same issue as (c).\n\nConvenience sampling: not effective – yields a biased sample (e.g., only nearby/similar neighborhoods; misses distant ones).\n\n\n\n2.5 Question 1.40\n\nExplanatory variable: percent of the population with a bachelor’s degree.\nResponse variable: per-capita income (in thousands).\n\nRelationship: strong positive linear association – as the bachelor’s-degree percent increases, per-capita income tends to increase. Few counties exceed 60% bachelor’s degree or $50k per-capita income.\n\nCausality: observational study; no causal claim. We can only say higher bachelor’s-degree share is associated with higher per-capita income.\n\n\n\n2.6 Question 2.12\nMedian is around 80. Because the distribution is left-skewed, the mean is expected to be slightly lower than the median.\n\n\n2.7 Question 2.30\n\nIf \\dfrac{\\bar{x}}{\\mathrm{median}} = 1, then \\bar{x}=\\mathrm{median}. This matches symmetric distributions.\n\nIf \\dfrac{\\bar{x}}{\\mathrm{median}} &lt; 1, then \\bar{x}&lt;\\mathrm{median}. This matches left-skewed distributions (lower values pull the mean down).\n\nIf \\dfrac{\\bar{x}}{\\mathrm{median}} &gt; 1, then \\bar{x}&gt;\\mathrm{median}. This matches right-skewed distributions (higher values pull the mean up).",
+    "objectID": "answers/wk01_answer.html#project",
+    "href": "answers/wk01_answer.html#project",
+    "title": "Week 1 Answers (0703)",
+    "section": "2 Project",
+    "text": "2 Project\n\nCreate an RStudio project inside a folder with proper names (e.g. TA_Session).\nCreate folders for R scripts and data.\nFor the following questions, your code should follow the coding styles in the slides.",
     "crumbs": [
-      "Homework Solutions",
-      "Homework 1 Answers"
+      "Practice Answers",
+      "Week 1 Answers (0703)"
+    ]
+  },
+  {
+    "objectID": "answers/wk01_answer.html#assign-values",
+    "href": "answers/wk01_answer.html#assign-values",
+    "title": "Week 1 Answers (0703)",
+    "section": "3 Assign Values",
+    "text": "3 Assign Values\nCreate two variables called x and y, and assign values 12345678 and 14593. Compute x / y.\nx &lt;- 12345678\ny &lt;- 14593\nx / y\n\n\n[1] 846",
+    "crumbs": [
+      "Practice Answers",
+      "Week 1 Answers (0703)"
+    ]
+  },
+  {
+    "objectID": "answers/wk01_answer.html#read-csv",
+    "href": "answers/wk01_answer.html#read-csv",
+    "title": "Week 1 Answers (0703)",
+    "section": "4 Read CSV",
+    "text": "4 Read CSV\n\nDownload the dataset (right click here) and save it in the data folder.\nInstall and call the package tidyverse.\nRead earthquakes.csv and save it as earthquakes_raw.\nTake a look of earthquakes_raw by clicking it from Rstudio the enviornment.\n\ninstall.packages(\"tidyverse\")\nlibrary(tidyverse)\n\nearthquakes_raw &lt;- read.csv(\"data/earthquakes.csv\")",
+    "crumbs": [
+      "Practice Answers",
+      "Week 1 Answers (0703)"
+    ]
+  },
+  {
+    "objectID": "example_code/Example_Code_wk01.html",
+    "href": "example_code/Example_Code_wk01.html",
+    "title": "Week 1 Example R Code (0703)",
+    "section": "",
+    "text": "Right click to download:\n\nwk01_example_code.R",
+    "crumbs": [
+      "Example R code",
+      "Week 1 Example R Code (0703)"
+    ]
+  },
+  {
+    "objectID": "slides/Slides_wk01.html",
+    "href": "slides/Slides_wk01.html",
+    "title": "Week 1 Slides (0703)",
+    "section": "",
+    "text": "Open in new tab · Download PDF",
+    "crumbs": [
+      "Slides",
+      "Week 1 Slides (0703)"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "2026 基礎數量方法 TA Session",
+    "section": "",
+    "text": "Welcome! Use the sidebar to open the current Slides, Practice, and Example R code.\nAdditional materials will be added after each TA Session.\nSending email: r13323002@ntu.edu.tw (mail title including [基礎數量方法 TA])\n\nOpenIntro Website",
+    "crumbs": [
+      "Home"
     ]
   },
   {
@@ -88,35 +142,36 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "2026 基礎數量方法 TA Session",
+    "objectID": "homework/hw1_answer.html",
+    "href": "homework/hw1_answer.html",
+    "title": "Homework 1 Answers",
     "section": "",
-    "text": "Welcome! Use the sidebar to open the current Slides, Practice, and Example R code.\nAdditional materials will be added after each TA Session.\nSending email: r13323002@ntu.edu.tw (mail title including [基礎數量方法 TA])\n\nOpenIntro Website",
+    "text": "If you find any typos or errors, please feel free to contact me via email at r13323002@ntu.edu.tw. I would appreciate it and will correct the solution to prevent any misunderstandings.\nIf you?e having trouble understanding the code, don? hesitate to ask me for help. I?l do my best to assist you during office hours or after the TA session.",
     "crumbs": [
-      "Home"
+      "Homework Solutions",
+      "Homework 1 Answers"
     ]
   },
   {
-    "objectID": "slides/Slides_wk01.html",
-    "href": "slides/Slides_wk01.html",
-    "title": "Week 1 Slides (0703)",
-    "section": "",
-    "text": "Open in new tab · Download PDF",
+    "objectID": "homework/hw1_answer.html#computer-exercises",
+    "href": "homework/hw1_answer.html#computer-exercises",
+    "title": "Homework 1 Answers",
+    "section": "1 Computer Exercises",
+    "text": "1 Computer Exercises\n(census.csv)\n# clear the memory and import package\nrm(list = ls())\nlibrary(tidyverse)\n\n# import data\ncensus &lt;- read.csv(\"census.csv\")\n\n1.1 Summary Statistics Table\n\nsummary_table &lt;- census %&gt;%\n  summarise(\n    variable = c(\"total_personal_income\", \"total_family_income\", \"age\"),\n    mean = c(\n      mean(total_personal_income, na.rm = TRUE),\n      mean(total_family_income, na.rm = TRUE),\n      mean(age, na.rm = TRUE)\n    ),\n    sd = c(\n      sd(total_personal_income, na.rm = TRUE),\n      sd(total_family_income, na.rm = TRUE),\n      sd(age, na.rm = TRUE)\n    ),\n    min = c(\n      min(total_personal_income, na.rm = TRUE),\n      min(total_family_income, na.rm = TRUE),\n      min(age, na.rm = TRUE)\n    ),\n    q25 = c(\n      quantile(total_personal_income, 0.25, na.rm = TRUE),\n      quantile(total_family_income, 0.25, na.rm = TRUE),\n      quantile(age, 0.25, na.rm = TRUE)\n    ),\n    median = c(\n      median(total_personal_income, na.rm = TRUE),\n      median(total_family_income, na.rm = TRUE),\n      median(age, na.rm = TRUE)\n    ),\n    q75 = c(\n      quantile(total_personal_income, 0.75, na.rm = TRUE),\n      quantile(total_family_income, 0.75, na.rm = TRUE),\n      quantile(age, 0.75, na.rm = TRUE)\n    ),\n    max = c(\n      max(total_personal_income, na.rm = TRUE),\n      max(total_family_income, na.rm = TRUE),\n      max(age, na.rm = TRUE)\n    )\n  )\n\nsummary_table[, 2:8] &lt;- round(summary_table[, 2:8], 2)\nsummary_table\n\n               variable     mean       sd   min   q25 median   q75    max\n1 total_personal_income 29081.72 46089.29 -4400  5900  17750 37000 456000\n2   total_family_income 57410.98 70732.06     0 21500  43000 70700 892050\n3                   age    35.30    21.81     0    17     35    51     93\n\n\n\n\n1.2 Distribution of Total Personal Income\ncensus_income &lt;- census[!is.na(census$total_personal_income), ]\n\nggplot(census_income, aes(x = total_personal_income)) +\n  geom_histogram(binwidth = 10000, fill = \"steelblue\", color = \"black\") +\n  labs(\n    x = \"Total Personal Income\",\n    y = \"Frequency\",\n    title = \"Distribution of Total Personal Income\"\n  ) +\n  theme(plot.title = element_text(hjust = 0.5))\n\n\n\n\n\n\n\n\n\nThe distribution of total personal income is strongly right-skewed. Most observations are concentrated in the lower income ranges, especially from 0 to about 40{,}000. There are also several high-income observations, with the maximum equal to 456{,}000, which appear as potential outliers.\n\n\n1.3 Age and Total Personal Income\nggplot(census_income, aes(x = age, y = total_personal_income)) +\n  geom_point(color = \"steelblue\") +\n  labs(\n    x = \"Age\",\n    y = \"Total Personal Income\",\n    title = \"Age and Total Personal Income\"\n  ) +\n  theme(plot.title = element_text(hjust = 0.5))\n\n\n\n\n\n\n\n\n\nThere appears to be a weak positive relationship between age and personal income. The points are widely scattered, so the association is not strong.\n\n\n1.4 Personal Income by Sex\nggplot(census_income, aes(x = sex, y = total_personal_income)) +\n  geom_boxplot(fill = \"steelblue\") +\n  labs(\n    x = \"Sex\",\n    y = \"Total Personal Income\",\n    title = \"Total Personal Income by Sex\"\n  ) +\n  theme(plot.title = element_text(hjust = 0.5))\n\n\n\n\n\n\n\n\n\nThe male group has a higher median personal income. The male group also exhibits greater overall variability, with a wider interquartile range and more extreme high-income observations.\n\n\n1.5 Sex and Race Contingency Table\nsex_race_table &lt;- table(census$sex, census$race_general)\nsex_race_table_withsum &lt;- addmargins(sex_race_table)\nsex_race_table_withsum\n\n\n        \n         American Indian or Alaska Native Black Chinese Japanese Other\n  Female                                2    32       6        0    12\n  Male                                  1    39       2        1    13\n  Sum                                   3    71       8        1    25\n        \n         Other Asian or Pacific Islander Two major races White Sum\n  Female                               5               5   170 232\n  Male                                 8              11   193 268\n  Sum                                 13              16   363 500\n\n\nggplot(census, aes(x = race_general, fill = sex)) +\n  geom_bar(position = \"dodge\") +\n  coord_flip() +\n  labs(\n    x = \"General Race\",\n    y = \"Headcount\",\n    fill = \"Sex\",\n    title = \"Headcount by Sex and Race\"\n  ) +\n  theme(plot.title = element_text(hjust = 0.5))\n\n\n\n\n\n\n\n\n\nThe largest race category in this sample is White for both sexes. The bar plot shows that male and female counts are broadly similar within most race categories, though males are slightly more numerous in the full sample.",
     "crumbs": [
-      "Slides",
-      "Week 1 Slides (0703)"
+      "Homework Solutions",
+      "Homework 1 Answers"
     ]
   },
   {
-    "objectID": "example_code/Example_Code_wk01.html",
-    "href": "example_code/Example_Code_wk01.html",
-    "title": "Week 1 Example R Code (0703)",
-    "section": "",
-    "text": "Right click to download:\n\nwk01_example_code.R",
+    "objectID": "homework/hw1_answer.html#textbook-exercises",
+    "href": "homework/hw1_answer.html#textbook-exercises",
+    "title": "Homework 1 Answers",
+    "section": "2 Textbook Exercises",
+    "text": "2 Textbook Exercises\n\n2.1 Question 1.4\n\nThe research question is: “Do asthmatic patients who practice the Buteyko method experience improvement in their condition?”\nThe cases are 600 adult patients aged 18–69 years diagnosed and currently treated for asthma.\nThe variables are whether or not the patient practiced the Buteyko method (categorical) and measures of quality of life, activity, asthma symptoms, and medication reduction of the patients (categorical, ordinal). It may also be reasonable to treat the ratings on a scale of 0 to 10 as discrete numerical variables.\n\n\n\n2.2 Question 1.10\n\nEach row of the data matrix represents a participant in the survey.\nThere are 1,691 participants in the survey.\nThe table below lists the types of variables included in the study:\n\n\n\n\nVariable\nType\n\n\n\n\nsex\ncategorical\n\n\nage\nnumerical, continuous\n\n\nmaritalStatus\ncategorical\n\n\ngrossIncome\nordinal*\n\n\nsmoke\ncategorical\n\n\namtWeekends\nnumerical, discrete\n\n\namtWeekdays\nnumerical, discrete\n\n\n\n* Note that income is a continuous numerical variable, but in this survey, it is recorded as an ordinal variable.\n\n\n2.3 Question 1.22\n\nObservational.\n\nNo. Because the study is observational, we cannot infer causation.\n\nPossible confounders: caffeine intake and lack of sleep. Either could explain the observed association between stress and muscle cramps (e.g., students may cramp due to increased caffeine use or insufficient sleep).\n\n\n\n2.4 Question 1.38\n\nSimple random sampling: effective – gives every household equal probability of selection.\n\nStratified sampling: effective – neighborhoods are distinct; stratifying ensures sampling from each neighborhood.\n\nCluster sampling: not effective – sampling whole neighborhoods would miss households from some areas, and neighborhoods differ greatly.\n\nMulti-stage sampling: suffers from the same issue as (c).\n\nConvenience sampling: not effective – yields a biased sample (e.g., only nearby/similar neighborhoods; misses distant ones).\n\n\n\n2.5 Question 1.40\n\nExplanatory variable: percent of the population with a bachelor’s degree.\nResponse variable: per-capita income (in thousands).\n\nRelationship: strong positive linear association – as the bachelor’s-degree percent increases, per-capita income tends to increase. Few counties exceed 60% bachelor’s degree or $50k per-capita income.\n\nCausality: observational study; no causal claim. We can only say higher bachelor’s-degree share is associated with higher per-capita income.\n\n\n\n2.6 Question 2.12\nMedian is around 80. Because the distribution is left-skewed, the mean is expected to be slightly lower than the median.\n\n\n2.7 Question 2.30\n\nIf \\dfrac{\\bar{x}}{\\mathrm{median}} = 1, then \\bar{x}=\\mathrm{median}. This matches symmetric distributions.\n\nIf \\dfrac{\\bar{x}}{\\mathrm{median}} &lt; 1, then \\bar{x}&lt;\\mathrm{median}. This matches left-skewed distributions (lower values pull the mean down).\n\nIf \\dfrac{\\bar{x}}{\\mathrm{median}} &gt; 1, then \\bar{x}&gt;\\mathrm{median}. This matches right-skewed distributions (higher values pull the mean up).",
     "crumbs": [
-      "Example R code",
-      "Week 1 Example R Code (0703)"
+      "Homework Solutions",
+      "Homework 1 Answers"
     ]
   }
 ]
