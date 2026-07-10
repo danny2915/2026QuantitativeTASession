@@ -70,7 +70,7 @@
     "href": "practices/wk02.html",
     "title": "Week 2 Practices (0710)",
     "section": "",
-    "text": "Download the dataset (right click here) and save it in the data folder.\nRead loans_full_schema.csv and save it as loan.",
+    "text": "Download the dataset loans_full_schema.csv (right click here) and save it in the data folder.\nRead loans_full_schema.csv and save it as loan.",
     "crumbs": [
       "Practices",
       "Week 2 Practices (0710)"
@@ -81,7 +81,7 @@
     "href": "practices/wk02.html#download-and-import-data",
     "title": "Week 2 Practices (0710)",
     "section": "",
-    "text": "Download the dataset (right click here) and save it in the data folder.\nRead loans_full_schema.csv and save it as loan.",
+    "text": "Download the dataset loans_full_schema.csv (right click here) and save it in the data folder.\nRead loans_full_schema.csv and save it as loan.",
     "crumbs": [
       "Practices",
       "Week 2 Practices (0710)"
