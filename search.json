@@ -55,14 +55,123 @@
     ]
   },
   {
-    "objectID": "example_code/Example_Code_wk01.html",
-    "href": "example_code/Example_Code_wk01.html",
-    "title": "Week 1 Example R Code (0703)",
+    "objectID": "example_code/Example_Code_wk02.html",
+    "href": "example_code/Example_Code_wk02.html",
+    "title": "Week 2 Example R Code (0710)",
     "section": "",
-    "text": "Right click to download:\n\nwk01_example_code.R",
+    "text": "Right click to download:\n\nwk02_example_code.R",
     "crumbs": [
       "Example R code",
-      "Week 1 Example R Code (0703)"
+      "Week 2 Example R Code (0710)"
+    ]
+  },
+  {
+    "objectID": "practices/wk02.html",
+    "href": "practices/wk02.html",
+    "title": "Week 2 Practices (0710)",
+    "section": "",
+    "text": "Download the dataset (right click here) and save it in the data folder.\nRead loans_full_schema.csv and save it as loan.",
+    "crumbs": [
+      "Practices",
+      "Week 2 Practices (0710)"
+    ]
+  },
+  {
+    "objectID": "practices/wk02.html#download-and-import-data",
+    "href": "practices/wk02.html#download-and-import-data",
+    "title": "Week 2 Practices (0710)",
+    "section": "",
+    "text": "Download the dataset (right click here) and save it in the data folder.\nRead loans_full_schema.csv and save it as loan.",
+    "crumbs": [
+      "Practices",
+      "Week 2 Practices (0710)"
+    ]
+  },
+  {
+    "objectID": "practices/wk02.html#histogram",
+    "href": "practices/wk02.html#histogram",
+    "title": "Week 2 Practices (0710)",
+    "section": "2 Histogram",
+    "text": "2 Histogram\nUse loan to create a histogram of loan_amount. Set the bin width to 5000, fill the bars with lightcoral, and set the bar outline color to white.",
+    "crumbs": [
+      "Practices",
+      "Week 2 Practices (0710)"
+    ]
+  },
+  {
+    "objectID": "practices/wk02.html#bar-graph",
+    "href": "practices/wk02.html#bar-graph",
+    "title": "Week 2 Practices (0710)",
+    "section": "3 Bar Graph",
+    "text": "3 Bar Graph\nUse loan to create a bar graph of verified_income, and fill the bars by application_type.\n\nSet position = \"dodge\" in geom_bar().\nAdd graph title and axis labels:\n\nTitle: Application Type by Income Verification\nx-axis: Income Verification Status\ny-axis: Number of Loans\nfill legend: Application Type",
+    "crumbs": [
+      "Practices",
+      "Week 2 Practices (0710)"
+    ]
+  },
+  {
+    "objectID": "practices/wk02.html#scatter-plot",
+    "href": "practices/wk02.html#scatter-plot",
+    "title": "Week 2 Practices (0710)",
+    "section": "4 Scatter Plot",
+    "text": "4 Scatter Plot\nUse loan to draw a scatter plot of debt_to_income (x-axis) and loan_amount (y-axis).\n\nSet the point color to steelblue.\nSet the point size to 0.6.\nAdd x-axis and y-axis labels.\n\n\n\n\n\n\n\nTipHint\n\n\n\nYou can use geom_point() and labs().",
+    "crumbs": [
+      "Practices",
+      "Week 2 Practices (0710)"
+    ]
+  },
+  {
+    "objectID": "practices/wk02.html#adjust-axis-scales",
+    "href": "practices/wk02.html#adjust-axis-scales",
+    "title": "Week 2 Practices (0710)",
+    "section": "5 Adjust Axis Scales",
+    "text": "5 Adjust Axis Scales\nDraw the same scatter plot again, but this time adjust the axes:\n\nSet the x-axis limits from 0 to 60, with breaks at 0, 15, 30, 45, and 60.\nSet the y-axis limits from 0 to 40000, with breaks at 0, 10000, 20000, 30000, and 40000.\nLabel the y-axis breaks as $0, $10k, $20k, $30k, and $40k.",
+    "crumbs": [
+      "Practices",
+      "Week 2 Practices (0710)"
+    ]
+  },
+  {
+    "objectID": "practices/wk02.html#box-plot",
+    "href": "practices/wk02.html#box-plot",
+    "title": "Week 2 Practices (0710)",
+    "section": "6 Box Plot",
+    "text": "6 Box Plot\nUse loan to create a box plot of loan_amount by homeownership. Set width = 0.4.",
+    "crumbs": [
+      "Practices",
+      "Week 2 Practices (0710)"
+    ]
+  },
+  {
+    "objectID": "practices/wk02.html#save-the-graph",
+    "href": "practices/wk02.html#save-the-graph",
+    "title": "Week 2 Practices (0710)",
+    "section": "7 Save the Graph",
+    "text": "7 Save the Graph\n\nCreate a folder called figures in your project folder.\nSave the box plot from the last question to the figures folder with the name wk02_loan_amount_home_plot.png.\nSet width = 6, height = 4, and dpi = 300.",
+    "crumbs": [
+      "Practices",
+      "Week 2 Practices (0710)"
+    ]
+  },
+  {
+    "objectID": "slides/Slides_wk02.html",
+    "href": "slides/Slides_wk02.html",
+    "title": "Week 2 Slides (0710)",
+    "section": "",
+    "text": "Open in new tab · Download PDF",
+    "crumbs": [
+      "Slides",
+      "Week 2 Slides (0710)"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "2026 基礎數量方法 TA Session",
+    "section": "",
+    "text": "Welcome! Use the sidebar to open the current Slides, Practice, and Example R code.\nAdditional materials will be added after each TA Session.\nSending email: r13323002@ntu.edu.tw (mail title including [基礎數量方法 TA])\n\nOpenIntro Website",
+    "crumbs": [
+      "Home"
     ]
   },
   {
@@ -74,16 +183,6 @@
     "crumbs": [
       "Slides",
       "Week 1 Slides (0703)"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "2026 基礎數量方法 TA Session",
-    "section": "",
-    "text": "Welcome! Use the sidebar to open the current Slides, Practice, and Example R code.\nAdditional materials will be added after each TA Session.\nSending email: r13323002@ntu.edu.tw (mail title including [基礎數量方法 TA])\n\nOpenIntro Website",
-    "crumbs": [
-      "Home"
     ]
   },
   {
@@ -139,6 +238,17 @@
     "crumbs": [
       "Practices",
       "Week 1 Practices (0703)"
+    ]
+  },
+  {
+    "objectID": "example_code/Example_Code_wk01.html",
+    "href": "example_code/Example_Code_wk01.html",
+    "title": "Week 1 Example R Code (0703)",
+    "section": "",
+    "text": "Right click to download:\n\nwk01_example_code.R",
+    "crumbs": [
+      "Example R code",
+      "Week 1 Example R Code (0703)"
     ]
   },
   {
