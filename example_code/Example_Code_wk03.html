@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Danny Po-Hsien Kang">
-<meta name="dcterms.date" content="2026-07-03">
 
-<title>2026 基礎數量方法 TA Session</title>
+<title>2026 基礎數量方法 TA Session - Week 3 Example R Code (0717)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,19 +23,20 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<link href="./slides/Slides_wk01.html" rel="next">
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../homework/hw1_answer.html" rel="next">
+<link href="../example_code/Example_Code_wk02.html" rel="prev">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -56,7 +55,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -68,7 +67,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Home</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../example_code/Example_Code_wk01.html">Example R code</a></li><li class="breadcrumb-item"><a href="../example_code/Example_Code_wk03.html">Week 3 Example R Code (0717)</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -80,14 +79,14 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">2026 基礎數量方法 TA Session</a> 
+      <a href="../">2026 基礎數量方法 TA Session</a> 
     </div>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Home</span></a>
   </div>
 </li>
@@ -102,13 +101,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/Slides_wk01.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/Slides_wk01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 Slides (0703)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./slides/Slides_wk02.html" class="sidebar-item-text sidebar-link">
+  <a href="../slides/Slides_wk02.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2 Slides (0710)</span></a>
   </div>
 </li>
@@ -116,28 +115,28 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
  <span class="menu-text">Example R code</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./example_code/Example_Code_wk01.html" class="sidebar-item-text sidebar-link">
+  <a href="../example_code/Example_Code_wk01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 Example R Code (0703)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./example_code/Example_Code_wk02.html" class="sidebar-item-text sidebar-link">
+  <a href="../example_code/Example_Code_wk02.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2 Example R Code (0710)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./example_code/Example_Code_wk03.html" class="sidebar-item-text sidebar-link">
+  <a href="../example_code/Example_Code_wk03.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Week 3 Example R Code (0717)</span></a>
   </div>
 </li>
@@ -154,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./homework/hw1_answer.html" class="sidebar-item-text sidebar-link">
+  <a href="../homework/hw1_answer.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Homework 1 Answers</span></a>
   </div>
 </li>
@@ -171,19 +170,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./practices/wk01.html" class="sidebar-item-text sidebar-link">
+  <a href="../practices/wk01.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 Practices (0703)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./practices/wk02.html" class="sidebar-item-text sidebar-link">
+  <a href="../practices/wk02.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2 Practices (0710)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./practices/wk03.html" class="sidebar-item-text sidebar-link">
+  <a href="../practices/wk03.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3 Practices (0717)</span></a>
   </div>
 </li>
@@ -200,19 +199,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./answers/wk01_answer.html" class="sidebar-item-text sidebar-link">
+  <a href="../answers/wk01_answer.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 1 Answers (0703)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./answers/wk02_answer.html" class="sidebar-item-text sidebar-link">
+  <a href="../answers/wk02_answer.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 2 Answers (0710)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./answers/wk03_answer.html" class="sidebar-item-text sidebar-link">
+  <a href="../answers/wk03_answer.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3 Answers (0717)</span></a>
   </div>
 </li>
@@ -229,28 +228,16 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../example_code/Example_Code_wk01.html">Example R code</a></li><li class="breadcrumb-item"><a href="../example_code/Example_Code_wk03.html">Week 3 Example R Code (0717)</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">2026 基礎數量方法 TA Session</h1>
+<h1 class="title">Week 3 Example R Code (0717)</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Danny Po-Hsien Kang </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">July 3, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -260,16 +247,10 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome! Use the sidebar to open the current <strong>Slides</strong>, <strong>Practice</strong>, and <strong>Example R code</strong>.</p>
-<p>Additional materials will be added after each TA Session.</p>
-<p><strong>Sending email</strong>: r13323002@ntu.edu.tw (mail title including [基礎數量方法 TA])<br>
-</p>
-<p><a href="https://www.openintro.org/data/">OpenIntro Website</a></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="welcome.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Animated welcome" width="960"></p>
-</figure>
-</div>
+<p>Right click to download:</p>
+<ul>
+<li><a href="wk03_example_code.R">wk03_example_code.R</a></li>
+</ul>
 
 
 
@@ -913,10 +894,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../example_code/Example_Code_wk02.html" class="pagination-link" aria-label="Week 2 Example R Code (0710)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 2 Example R Code (0710)</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./slides/Slides_wk01.html" class="pagination-link" aria-label="Week 1 Slides (0703)">
-        <span class="nav-page-text">Week 1 Slides (0703)</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../homework/hw1_answer.html" class="pagination-link" aria-label="Homework 1 Answers">
+        <span class="nav-page-text">Homework 1 Answers</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -925,5 +909,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

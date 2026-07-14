@@ -1,5 +1,71 @@
 [
   {
+    "objectID": "answers/wk03_answer.html",
+    "href": "answers/wk03_answer.html",
+    "title": "Week 3 Answers (0717)",
+    "section": "",
+    "text": "Download the datasets china.csv (right click here), nba_players_19.csv (right click here), mlb.csv (right click here), and drug_use.csv (right click here) and save them in the data folder.\nImport the package tidyverse.\nRead the four datasets and save them as china, nba, mlb, and drug.\n\nlibrary(tidyverse)\n\nchina &lt;- read.csv(\"data/china.csv\")\nnba &lt;- read.csv(\"data/nba_players_19.csv\")\nmlb &lt;- read.csv(\"data/mlb.csv\")\ndrug &lt;- read.csv(\"data/drug_use.csv\")",
+    "crumbs": [
+      "Practice Answers",
+      "Week 3 Answers (0717)"
+    ]
+  },
+  {
+    "objectID": "answers/wk03_answer.html#download-and-import-data",
+    "href": "answers/wk03_answer.html#download-and-import-data",
+    "title": "Week 3 Answers (0717)",
+    "section": "",
+    "text": "Download the datasets china.csv (right click here), nba_players_19.csv (right click here), mlb.csv (right click here), and drug_use.csv (right click here) and save them in the data folder.\nImport the package tidyverse.\nRead the four datasets and save them as china, nba, mlb, and drug.\n\nlibrary(tidyverse)\n\nchina &lt;- read.csv(\"data/china.csv\")\nnba &lt;- read.csv(\"data/nba_players_19.csv\")\nmlb &lt;- read.csv(\"data/mlb.csv\")\ndrug &lt;- read.csv(\"data/drug_use.csv\")",
+    "crumbs": [
+      "Practice Answers",
+      "Week 3 Answers (0717)"
+    ]
+  },
+  {
+    "objectID": "answers/wk03_answer.html#childcare-hours-in-china",
+    "href": "answers/wk03_answer.html#childcare-hours-in-china",
+    "title": "Week 3 Answers (0717)",
+    "section": "2 Childcare Hours in China",
+    "text": "2 Childcare Hours in China\nThe dataset china.csv records childcare time and the gender and education of each respondent. By browsing the data, you might immediately notice that some values in the dataset appear unusual. For example, some values in the variable child_care are -99, which indicates that the observation is missing.\nUse the filter() function to keep only the observations where child_care is not equal to -99. Assign the result to a variable called china_filter.\nchina_filter &lt;- china %&gt;%\n  filter(child_care != -99)",
+    "crumbs": [
+      "Practice Answers",
+      "Week 3 Answers (0717)"
+    ]
+  },
+  {
+    "objectID": "answers/wk03_answer.html#nba-players-height",
+    "href": "answers/wk03_answer.html#nba-players-height",
+    "title": "Week 3 Answers (0717)",
+    "section": "3 NBA Players’ Height",
+    "text": "3 NBA Players’ Height\nThe dataset nba_players_19.csv records information about NBA players in the 2018-2019 season. We would like to know who the tallest players in the NBA are. Follow the instructions step-by-step:\n\nCreate a new variable called height_cm using the mutate() function, where height_cm = 2.54 * height, given that the unit of height is inches.\nSort the dataset by height_cm in descending order.\nUse the select() function to keep only first_name, last_name, position, and height_cm.\n\nAssign the result to a variable called nba_height. Using the pipeline %&gt;% to chain all the operations together is strongly recommended. Try it!\nnba_height &lt;- nba %&gt;%\n  mutate(height_cm = 2.54 * height) %&gt;%\n  arrange(desc(height_cm)) %&gt;%\n  select(first_name, last_name, position, height_cm)",
+    "crumbs": [
+      "Practice Answers",
+      "Week 3 Answers (0717)"
+    ]
+  },
+  {
+    "objectID": "answers/wk03_answer.html#summarize-your-data",
+    "href": "answers/wk03_answer.html#summarize-your-data",
+    "title": "Week 3 Answers (0717)",
+    "section": "4 Summarize Your Data",
+    "text": "4 Summarize Your Data\nThe dataset mlb.csv contains salary data for Major League Baseball players in 2010.\n\n4.1 Which Team Pays the Most?\nWe want to determine which team invests the most money in building a baseball team. Follow the steps below:\n\nUse the group_by() function to group the observations by team.\nUse the summarize() function to calculate the total salary spent by each team using sum(). Name the calculated column total_salary.\nUse the arrange() function to sort the observations by total_salary in descending order.\n\nAssign the result to a variable called team_salary.\nteam_salary &lt;- mlb %&gt;%\n  group_by(team) %&gt;%\n  summarize(total_salary = sum(salary)) %&gt;%\n  arrange(desc(total_salary))\n\nprint(team_salary)\n\n\n# A tibble: 30 × 2\n   team                  total_salary\n   &lt;chr&gt;                        &lt;dbl&gt;\n 1 New York Yankees           206333.\n 2 Boston Red Sox             162447.\n 3 Chicago Cubs               146609 \n 4 Philadelphia Phillies      141928.\n 5 New York Mets              134423.\n 6 Detroit Tigers             122865.\n 7 Chicago White Sox          105530 \n 8 Los Angeles Angeles        104964.\n 9 San Francisco Giants        98641.\n10 Minnesota Twins             97559.\n# ℹ 20 more rows\n\n\n\n\n4.2 Which Position Earns the Most?\nNext, we want to determine which position earns the highest average salary. Follow the steps below:\n\nUse the group_by() function to group the observations by position.\nUse the summarize() function to calculate the average salary for each position using mean(). Name the calculated column avg_salary.\nUse the arrange() function to sort the observations by avg_salary in descending order.\n\nAssign the result to a variable called position_salary.\nposition_salary &lt;- mlb %&gt;%\n  group_by(position) %&gt;%\n  summarize(avg_salary = mean(salary)) %&gt;%\n  arrange(desc(avg_salary))\n\nprint(position_salary)\n\n\n# A tibble: 9 × 2\n  position          avg_salary\n  &lt;chr&gt;                  &lt;dbl&gt;\n1 First Baseman          5827.\n2 Designated Hitter      5236.\n3 Third Baseman          4641.\n4 Outfielder             3754.\n5 Second Baseman         3023.\n6 Pitcher                2999.\n7 Shortstop              2844.\n8 Catcher                1937.\n9 Infielder               771.",
+    "crumbs": [
+      "Practice Answers",
+      "Week 3 Answers (0717)"
+    ]
+  },
+  {
+    "objectID": "answers/wk03_answer.html#contingency-table",
+    "href": "answers/wk03_answer.html#contingency-table",
+    "title": "Week 3 Answers (0717)",
+    "section": "5 Contingency Table",
+    "text": "5 Contingency Table\nThe dataset drug_use.csv contains drug-use records for 445 student-parent pairs. Each student and parent reports whether they use drugs.\n\nUse the table() function to create a contingency table where the rows represent student and the columns represent parents. Assign the output to a variable called count_table.\nUse addmargins() to add the sum row and sum column. Assign the result to a variable called count_table_sum.\nPrint count_table_sum to check the distribution.\n\ncount_table &lt;- table(\n  drug$student,\n  drug$parents,\n  dnn = c(\"Student's Drug Use\", \"Parent's Drug Use\")\n)\n\ncount_table_sum &lt;- addmargins(count_table)\nprint(count_table_sum)\n\n\n                  Parent's Drug Use\nStudent's Drug Use not used Sum\n              not  141   85 226\n              uses  94  125 219\n              Sum  235  210 445",
+    "crumbs": [
+      "Practice Answers",
+      "Week 3 Answers (0717)"
+    ]
+  },
+  {
     "objectID": "answers/wk01_answer.html",
     "href": "answers/wk01_answer.html",
     "title": "Week 1 Answers (0703)",
@@ -55,14 +121,25 @@
     ]
   },
   {
-    "objectID": "example_code/Example_Code_wk02.html",
-    "href": "example_code/Example_Code_wk02.html",
-    "title": "Week 2 Example R Code (0710)",
+    "objectID": "example_code/Example_Code_wk03.html",
+    "href": "example_code/Example_Code_wk03.html",
+    "title": "Week 3 Example R Code (0717)",
     "section": "",
-    "text": "Right click to download:\n\nwk02_example_code.R",
+    "text": "Right click to download:\n\nwk03_example_code.R",
     "crumbs": [
       "Example R code",
-      "Week 2 Example R Code (0710)"
+      "Week 3 Example R Code (0717)"
+    ]
+  },
+  {
+    "objectID": "example_code/Example_Code_wk01.html",
+    "href": "example_code/Example_Code_wk01.html",
+    "title": "Week 1 Example R Code (0703)",
+    "section": "",
+    "text": "Right click to download:\n\nwk01_example_code.R",
+    "crumbs": [
+      "Example R code",
+      "Week 1 Example R Code (0703)"
     ]
   },
   {
@@ -114,7 +191,7 @@
     "href": "practices/wk02.html#scatter-plot",
     "title": "Week 2 Practices (0710)",
     "section": "4 Scatter Plot",
-    "text": "4 Scatter Plot\nUse loan to draw a scatter plot of debt_to_income (x-axis) and loan_amount (y-axis).\n\nSet the point color to steelblue.\nSet the point size to 0.6.\nAdd x-axis and y-axis labels.\n\n\n\n\n\n\n\nTipHint\n\n\n\nYou can use geom_point() and labs().",
+    "text": "4 Scatter Plot\nUse loan to draw a scatter plot of debt_to_income (x-axis) and loan_amount (y-axis).\n\nSet the point color to steelblue.\nSet the point size to 0.6.\nAdd x-axis and y-axis labels.\n\n\n\n\n\n\n\nHint\n\n\n\nYou can use geom_point() and labs().",
     "crumbs": [
       "Practices",
       "Week 2 Practices (0710)"
@@ -241,14 +318,80 @@
     ]
   },
   {
-    "objectID": "example_code/Example_Code_wk01.html",
-    "href": "example_code/Example_Code_wk01.html",
-    "title": "Week 1 Example R Code (0703)",
+    "objectID": "practices/wk03.html",
+    "href": "practices/wk03.html",
+    "title": "Week 3 Practices (0717)",
     "section": "",
-    "text": "Right click to download:\n\nwk01_example_code.R",
+    "text": "Download the datasets china.csv (right click here), nba_players_19.csv (right click here), mlb.csv (right click here), and drug_use.csv (right click here) and save them in the data folder.\nImport the package tidyverse.\nRead the four datasets and save them as china, nba, mlb, and drug.",
+    "crumbs": [
+      "Practices",
+      "Week 3 Practices (0717)"
+    ]
+  },
+  {
+    "objectID": "practices/wk03.html#download-and-import-data",
+    "href": "practices/wk03.html#download-and-import-data",
+    "title": "Week 3 Practices (0717)",
+    "section": "",
+    "text": "Download the datasets china.csv (right click here), nba_players_19.csv (right click here), mlb.csv (right click here), and drug_use.csv (right click here) and save them in the data folder.\nImport the package tidyverse.\nRead the four datasets and save them as china, nba, mlb, and drug.",
+    "crumbs": [
+      "Practices",
+      "Week 3 Practices (0717)"
+    ]
+  },
+  {
+    "objectID": "practices/wk03.html#childcare-hours-in-china",
+    "href": "practices/wk03.html#childcare-hours-in-china",
+    "title": "Week 3 Practices (0717)",
+    "section": "2 Childcare Hours in China",
+    "text": "2 Childcare Hours in China\nThe dataset china.csv records childcare time and the gender and education of each respondent. By browsing the data, you might immediately notice that some values in the dataset appear unusual. For example, some values in the variable child_care are -99, which indicates that the observation is missing.\nUse the filter() function to keep only the observations where child_care is not equal to -99. Assign the result to a variable called china_filter.",
+    "crumbs": [
+      "Practices",
+      "Week 3 Practices (0717)"
+    ]
+  },
+  {
+    "objectID": "practices/wk03.html#nba-players-height",
+    "href": "practices/wk03.html#nba-players-height",
+    "title": "Week 3 Practices (0717)",
+    "section": "3 NBA Players’ Height",
+    "text": "3 NBA Players’ Height\nThe dataset nba_players_19.csv records information about NBA players in the 2018-2019 season. We would like to know who the tallest players in the NBA are. Follow the instructions step-by-step:\n\nCreate a new variable called height_cm using the mutate() function, where height_cm = 2.54 * height, given that the unit of height is inches.\nSort the dataset by height_cm in descending order.\nUse the select() function to keep only first_name, last_name, position, and height_cm.\n\nAssign the result to a variable called nba_height. Using the pipeline %&gt;% to chain all the operations together is strongly recommended. Try it!",
+    "crumbs": [
+      "Practices",
+      "Week 3 Practices (0717)"
+    ]
+  },
+  {
+    "objectID": "practices/wk03.html#summarize-your-data",
+    "href": "practices/wk03.html#summarize-your-data",
+    "title": "Week 3 Practices (0717)",
+    "section": "4 Summarize Your Data",
+    "text": "4 Summarize Your Data\nThe dataset mlb.csv contains salary data for Major League Baseball players in 2010.\n\n4.1 Which Team Pays the Most?\nWe want to determine which team invests the most money in building a baseball team. Follow the steps below:\n\nUse the group_by() function to group the observations by team.\nUse the summarize() function to calculate the total salary spent by each team using sum(). Name the calculated column total_salary.\nUse the arrange() function to sort the observations by total_salary in descending order.\n\nAssign the result to a variable called team_salary.\n\n\n4.2 Which Position Earns the Most?\nNext, we want to determine which position earns the highest average salary. Follow the steps below:\n\nUse the group_by() function to group the observations by position.\nUse the summarize() function to calculate the average salary for each position using mean(). Name the calculated column avg_salary.\nUse the arrange() function to sort the observations by avg_salary in descending order.\n\nAssign the result to a variable called position_salary.",
+    "crumbs": [
+      "Practices",
+      "Week 3 Practices (0717)"
+    ]
+  },
+  {
+    "objectID": "practices/wk03.html#contingency-table",
+    "href": "practices/wk03.html#contingency-table",
+    "title": "Week 3 Practices (0717)",
+    "section": "5 Contingency Table",
+    "text": "5 Contingency Table\nThe dataset drug_use.csv contains drug-use records for 445 student-parent pairs. Each student and parent reports whether they use drugs.\n\nUse the table() function to create a contingency table where the rows represent student and the columns represent parents. Assign the output to a variable called count_table.\nUse addmargins() to add the sum row and sum column. Assign the result to a variable called count_table_sum.\nPrint count_table_sum to check the distribution.",
+    "crumbs": [
+      "Practices",
+      "Week 3 Practices (0717)"
+    ]
+  },
+  {
+    "objectID": "example_code/Example_Code_wk02.html",
+    "href": "example_code/Example_Code_wk02.html",
+    "title": "Week 2 Example R Code (0710)",
+    "section": "",
+    "text": "Right click to download:\n\nwk02_example_code.R",
     "crumbs": [
       "Example R code",
-      "Week 1 Example R Code (0703)"
+      "Week 2 Example R Code (0710)"
     ]
   },
   {
@@ -282,6 +425,94 @@
     "crumbs": [
       "Homework Solutions",
       "Homework 1 Answers"
+    ]
+  },
+  {
+    "objectID": "answers/wk02_answer.html",
+    "href": "answers/wk02_answer.html",
+    "title": "Week 2 Answers (0710)",
+    "section": "",
+    "text": "Download the dataset loans_full_schema.csv (right click here) and save it in the data folder.\nRead loans_full_schema.csv and save it as loan.\n\nlibrary(tidyverse)\n\nloan &lt;- read.csv(\"data/loans_full_schema.csv\")",
+    "crumbs": [
+      "Practice Answers",
+      "Week 2 Answers (0710)"
+    ]
+  },
+  {
+    "objectID": "answers/wk02_answer.html#download-and-import-data",
+    "href": "answers/wk02_answer.html#download-and-import-data",
+    "title": "Week 2 Answers (0710)",
+    "section": "",
+    "text": "Download the dataset loans_full_schema.csv (right click here) and save it in the data folder.\nRead loans_full_schema.csv and save it as loan.\n\nlibrary(tidyverse)\n\nloan &lt;- read.csv(\"data/loans_full_schema.csv\")",
+    "crumbs": [
+      "Practice Answers",
+      "Week 2 Answers (0710)"
+    ]
+  },
+  {
+    "objectID": "answers/wk02_answer.html#histogram",
+    "href": "answers/wk02_answer.html#histogram",
+    "title": "Week 2 Answers (0710)",
+    "section": "2 Histogram",
+    "text": "2 Histogram\nUse loan to create a histogram of loan_amount. Set the bin width to 5000, fill the bars with lightcoral, and set the bar outline color to white.\nloan %&gt;%\n  ggplot(aes(x = loan_amount)) +\n  geom_histogram(binwidth = 5000,\n                 fill = \"lightcoral\",\n                 color = \"white\")",
+    "crumbs": [
+      "Practice Answers",
+      "Week 2 Answers (0710)"
+    ]
+  },
+  {
+    "objectID": "answers/wk02_answer.html#bar-graph",
+    "href": "answers/wk02_answer.html#bar-graph",
+    "title": "Week 2 Answers (0710)",
+    "section": "3 Bar Graph",
+    "text": "3 Bar Graph\nUse loan to create a bar graph of verified_income, and fill the bars by application_type.\n\nSet position = \"dodge\" in geom_bar().\nAdd graph title and axis labels:\n\nTitle: Application Type by Income Verification\nx-axis: Income Verification Status\ny-axis: Number of Loans\nfill legend: Application Type\n\n\nloan %&gt;%\n  ggplot(aes(x = verified_income, fill = application_type)) +\n  geom_bar(position = \"dodge\") +\n  labs(\n    x = \"Income Verification Status\",\n    y = \"Number of Loans\",\n    title = \"Application Type by Income Verification\",\n    fill = \"Application Type\"\n  )",
+    "crumbs": [
+      "Practice Answers",
+      "Week 2 Answers (0710)"
+    ]
+  },
+  {
+    "objectID": "answers/wk02_answer.html#scatter-plot",
+    "href": "answers/wk02_answer.html#scatter-plot",
+    "title": "Week 2 Answers (0710)",
+    "section": "4 Scatter Plot",
+    "text": "4 Scatter Plot\nUse loan to draw a scatter plot of debt_to_income (x-axis) and loan_amount (y-axis).\n\nSet the point color to steelblue.\nSet the point size to 0.6.\nAdd x-axis and y-axis labels.\n\n\n\n\n\n\n\nHint\n\n\n\nYou can use geom_point() and labs().\n\n\nloan %&gt;%\n  ggplot(aes(x = debt_to_income, y = loan_amount)) +\n  geom_point(color = \"steelblue\", size = 0.6) +\n  labs(\n    x = \"Debt-to-Income Ratio\",\n    y = \"Loan Amount\"\n  )",
+    "crumbs": [
+      "Practice Answers",
+      "Week 2 Answers (0710)"
+    ]
+  },
+  {
+    "objectID": "answers/wk02_answer.html#adjust-axis-scales",
+    "href": "answers/wk02_answer.html#adjust-axis-scales",
+    "title": "Week 2 Answers (0710)",
+    "section": "5 Adjust Axis Scales",
+    "text": "5 Adjust Axis Scales\nDraw the same scatter plot again, but this time adjust the axes:\n\nSet the x-axis limits from 0 to 60, with breaks at 0, 15, 30, 45, and 60.\nSet the y-axis limits from 0 to 40000, with breaks at 0, 10000, 20000, 30000, and 40000.\nLabel the y-axis breaks as $0, $10k, $20k, $30k, and $40k.\n\nloan %&gt;%\n  ggplot(aes(x = debt_to_income, y = loan_amount)) +\n  geom_point(color = \"steelblue\", size = 0.6) +\n  labs(\n    x = \"Debt-to-Income Ratio\",\n    y = \"Loan Amount\"\n  ) +\n  scale_x_continuous(\n    limits = c(0, 60),\n    breaks = c(0, 15, 30, 45, 60)\n  ) +\n  scale_y_continuous(\n    limits = c(0, 40000),\n    breaks = c(0, 10000, 20000, 30000, 40000),\n    labels = c(\"$0\", \"$10k\", \"$20k\", \"$30k\", \"$40k\")\n  )",
+    "crumbs": [
+      "Practice Answers",
+      "Week 2 Answers (0710)"
+    ]
+  },
+  {
+    "objectID": "answers/wk02_answer.html#box-plot",
+    "href": "answers/wk02_answer.html#box-plot",
+    "title": "Week 2 Answers (0710)",
+    "section": "6 Box Plot",
+    "text": "6 Box Plot\nUse loan to create a box plot of loan_amount by homeownership. Set width = 0.4.\nbox_plot &lt;- loan %&gt;%\n  ggplot(aes(x = homeownership, y = loan_amount)) +\n  geom_boxplot(width = 0.4)\n\nprint(box_plot)",
+    "crumbs": [
+      "Practice Answers",
+      "Week 2 Answers (0710)"
+    ]
+  },
+  {
+    "objectID": "answers/wk02_answer.html#save-the-graph",
+    "href": "answers/wk02_answer.html#save-the-graph",
+    "title": "Week 2 Answers (0710)",
+    "section": "7 Save the Graph",
+    "text": "7 Save the Graph\n\nCreate a folder called figures in your project folder.\nSave the box plot from the last question to the figures folder with the name wk02_loan_amount_home_plot.png.\nSet width = 6, height = 4, and dpi = 300.\n\nggsave(filename = \"wk02_loan_amount_home_plot.png\",\n       plot = box_plot,\n       path = \"figures\",\n       width = 6,\n       height = 4,\n       dpi = 300)",
+    "crumbs": [
+      "Practice Answers",
+      "Week 2 Answers (0710)"
     ]
   }
 ]
