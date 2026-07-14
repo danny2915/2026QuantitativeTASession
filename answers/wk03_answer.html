@@ -265,11 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#download-and-import-data" id="toc-download-and-import-data" class="nav-link active" data-scroll-target="#download-and-import-data"><span class="header-section-number">1</span> Download and Import Data</a></li>
   <li><a href="#childcare-hours-in-china" id="toc-childcare-hours-in-china" class="nav-link" data-scroll-target="#childcare-hours-in-china"><span class="header-section-number">2</span> Childcare Hours in China</a></li>
   <li><a href="#nba-players-height" id="toc-nba-players-height" class="nav-link" data-scroll-target="#nba-players-height"><span class="header-section-number">3</span> NBA Players’ Height</a></li>
-  <li><a href="#summarize-your-data" id="toc-summarize-your-data" class="nav-link" data-scroll-target="#summarize-your-data"><span class="header-section-number">4</span> Summarize Your Data</a>
-  <ul class="collapse">
-  <li><a href="#which-team-pays-the-most" id="toc-which-team-pays-the-most" class="nav-link" data-scroll-target="#which-team-pays-the-most"><span class="header-section-number">4.1</span> Which Team Pays the Most?</a></li>
-  <li><a href="#which-position-earns-the-most" id="toc-which-position-earns-the-most" class="nav-link" data-scroll-target="#which-position-earns-the-most"><span class="header-section-number">4.2</span> Which Position Earns the Most?</a></li>
-  </ul></li>
+  <li><a href="#summarize-your-data" id="toc-summarize-your-data" class="nav-link" data-scroll-target="#summarize-your-data"><span class="header-section-number">4</span> Summarize Your Data</a></li>
   <li><a href="#contingency-table" id="toc-contingency-table" class="nav-link" data-scroll-target="#contingency-table"><span class="header-section-number">5</span> Contingency Table</a></li>
   </ul>
 </nav>
@@ -338,15 +334,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="summarize-your-data" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="summarize-your-data"><span class="header-section-number">4</span> Summarize Your Data</h2>
 <p>The dataset <code>mlb.csv</code> contains salary data for Major League Baseball players in 2010.</p>
-<section id="which-team-pays-the-most" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="which-team-pays-the-most"><span class="header-section-number">4.1</span> Which Team Pays the Most?</h3>
 <p>We want to determine which team invests the most money in building a baseball team. Follow the steps below:</p>
 <ol type="1">
 <li><p>Use the <code>group_by()</code> function to group the observations by <code>team</code>.</p></li>
 <li><p>Use the <code>summarize()</code> function to calculate the total salary spent by each team using <code>sum()</code>. Name the calculated column <code>total_salary</code>.</p></li>
 <li><p>Use the <code>arrange()</code> function to sort the observations by <code>total_salary</code> in descending order.</p></li>
 </ol>
-<p>Assign the result to a variable called <code>team_salary</code>.</p>
+<p>Assign the result to a variable called <code>team_salary</code> and print it.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>team_salary <span class="ot">&lt;-</span> mlb <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(team) <span class="sc">%&gt;%</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_salary =</span> <span class="fu">sum</span>(salary)) <span class="sc">%&gt;%</span></span>
@@ -372,39 +366,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="which-position-earns-the-most" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="which-position-earns-the-most"><span class="header-section-number">4.2</span> Which Position Earns the Most?</h3>
-<p>Next, we want to determine which position earns the highest average salary. Follow the steps below:</p>
-<ol type="1">
-<li><p>Use the <code>group_by()</code> function to group the observations by <code>position</code>.</p></li>
-<li><p>Use the <code>summarize()</code> function to calculate the average salary for each position using <code>mean()</code>. Name the calculated column <code>avg_salary</code>.</p></li>
-<li><p>Use the <code>arrange()</code> function to sort the observations by <code>avg_salary</code> in descending order.</p></li>
-</ol>
-<p>Assign the result to a variable called <code>position_salary</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>position_salary <span class="ot">&lt;-</span> mlb <span class="sc">%&gt;%</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(position) <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_salary =</span> <span class="fu">mean</span>(salary)) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(avg_salary))</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(position_salary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 9 × 2
-  position          avg_salary
-  &lt;chr&gt;                  &lt;dbl&gt;
-1 First Baseman          5827.
-2 Designated Hitter      5236.
-3 Third Baseman          4641.
-4 Outfielder             3754.
-5 Second Baseman         3023.
-6 Pitcher                2999.
-7 Shortstop              2844.
-8 Catcher                1937.
-9 Infielder               771.</code></pre>
-</div>
-</div>
-</section>
-</section>
 <section id="contingency-table" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="contingency-table"><span class="header-section-number">5</span> Contingency Table</h2>
 <p>The dataset <code>drug_use.csv</code> contains drug-use records for 445 student-parent pairs. Each student and parent reports whether they use drugs.</p>
@@ -413,14 +374,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Use <code>addmargins()</code> to add the sum row and sum column. Assign the result to a variable called <code>count_table_sum</code>.</p></li>
 <li><p>Print <code>count_table_sum</code> to check the distribution.</p></li>
 </ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>count_table <span class="ot">&lt;-</span> <span class="fu">table</span>(</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  drug<span class="sc">$</span>student,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  drug<span class="sc">$</span>parents,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dnn =</span> <span class="fu">c</span>(<span class="st">"Student's Drug Use"</span>, <span class="st">"Parent's Drug Use"</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>count_table_sum <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(count_table)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(count_table_sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>count_table <span class="ot">&lt;-</span> <span class="fu">table</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  drug<span class="sc">$</span>student,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  drug<span class="sc">$</span>parents,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dnn =</span> <span class="fu">c</span>(<span class="st">"Student's Drug Use"</span>, <span class="st">"Parent's Drug Use"</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>count_table_sum <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(count_table)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(count_table_sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>                  Parent's Drug Use
