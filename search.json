@@ -2,56 +2,56 @@
   {
     "objectID": "quiz/quiz01_answer.html",
     "href": "quiz/quiz01_answer.html",
-    "title": "R Programming Challenge Answer",
+    "title": "R Programming Challenge 1 Answer",
     "section": "",
     "text": "(5 pts) Import the package tidyverse.\n(5 pts) Download the dataset loans_full_schema.csv (right click here) and save it in the data folder. Read loans_full_schema.csv and save it as loan.\n\nlibrary(tidyverse)\n\nloan &lt;- read.csv(\"data/loans_full_schema.csv\")\n\n\n\n\n(8 pts) Create a scatter plot of loan_amount and installment. Set the point color to steelblue and the point size to 0.5.\n(4 pts) Set the x-axis limits from 0 to 40000, with breaks at 0, 10000, 20000, 30000, and 40000.\n(4 pts) Set the y-axis limits from 0 to 1600, with breaks at 0, 400, 800, 1200, and 1600.\n(4 pts) Print the graph.\n\nloan %&gt;%\n  ggplot(aes(x = loan_amount, y = installment)) +\n  geom_point(color = \"steelblue\", size = 0.5) +\n  scale_x_continuous(\n    limits = c(0, 40000),\n    breaks = c(0, 10000, 20000, 30000, 40000)\n  ) +\n  scale_y_continuous(\n    limits = c(0, 1600),\n    breaks = c(0, 400, 800, 1200, 1600)\n  )",
     "crumbs": [
       "Quizzes",
-      "R Programming Challenge Answer"
+      "R Programming Challenge 1 Answer"
     ]
   },
   {
     "objectID": "quiz/quiz01_answer.html#loan-installment-scatter-plot-30-pts",
     "href": "quiz/quiz01_answer.html#loan-installment-scatter-plot-30-pts",
-    "title": "R Programming Challenge Answer",
+    "title": "R Programming Challenge 1 Answer",
     "section": "",
     "text": "(5 pts) Import the package tidyverse.\n(5 pts) Download the dataset loans_full_schema.csv (right click here) and save it in the data folder. Read loans_full_schema.csv and save it as loan.\n\nlibrary(tidyverse)\n\nloan &lt;- read.csv(\"data/loans_full_schema.csv\")\n\n\n\n\n(8 pts) Create a scatter plot of loan_amount and installment. Set the point color to steelblue and the point size to 0.5.\n(4 pts) Set the x-axis limits from 0 to 40000, with breaks at 0, 10000, 20000, 30000, and 40000.\n(4 pts) Set the y-axis limits from 0 to 1600, with breaks at 0, 400, 800, 1200, and 1600.\n(4 pts) Print the graph.\n\nloan %&gt;%\n  ggplot(aes(x = loan_amount, y = installment)) +\n  geom_point(color = \"steelblue\", size = 0.5) +\n  scale_x_continuous(\n    limits = c(0, 40000),\n    breaks = c(0, 10000, 20000, 30000, 40000)\n  ) +\n  scale_y_continuous(\n    limits = c(0, 1600),\n    breaks = c(0, 400, 800, 1200, 1600)\n  )",
     "crumbs": [
       "Quizzes",
-      "R Programming Challenge Answer"
+      "R Programming Challenge 1 Answer"
     ]
   },
   {
     "objectID": "quiz/quiz01_answer.html#ames-housing-box-plot-30-pts",
     "href": "quiz/quiz01_answer.html#ames-housing-box-plot-30-pts",
-    "title": "R Programming Challenge Answer",
+    "title": "R Programming Challenge 1 Answer",
     "section": "2 Ames Housing Box Plot (30 pts)",
     "text": "2 Ames Housing Box Plot (30 pts)\n\n2.1 Setup\n\n(5 pts) Import the package tidyverse.\n(5 pts) Download the dataset ames.csv (right click here) and save it in the data folder. Read ames.csv and save it as housing.\n\nlibrary(tidyverse)\n\nhousing &lt;- read.csv(\"data/ames.csv\")\n\n\n2.2 Create a box plot\n\n(8 pts) Create a box plot of price by Central.Air. Set width = 0.4 in geom_boxplot().\n(8 pts) Add graph title and axis labels:\n\nTitle: House Price by Central Air\nx-axis: Central Air\ny-axis: House Price\n\n(4 pts) Print the graph.\n\nhousing %&gt;%\n  ggplot(aes(x = Central.Air, y = price)) +\n  geom_boxplot(width = 0.4) +\n  labs(\n    x = \"Central Air\",\n    y = \"House Price\",\n    title = \"House Price by Central Air\"\n  )",
     "crumbs": [
       "Quizzes",
-      "R Programming Challenge Answer"
+      "R Programming Challenge 1 Answer"
     ]
   },
   {
     "objectID": "quiz/quiz01_answer.html#nc-births-contingency-table-30-pts",
     "href": "quiz/quiz01_answer.html#nc-births-contingency-table-30-pts",
-    "title": "R Programming Challenge Answer",
+    "title": "R Programming Challenge 1 Answer",
     "section": "3 NC Births Contingency Table (30 pts)",
     "text": "3 NC Births Contingency Table (30 pts)\n\n3.1 Setup\n\n(5 pts) Import the package tidyverse.\n(5 pts) Download the dataset ncbirths.csv (right click here) and save it in the data folder. Read ncbirths.csv and save it as birth.\n\nlibrary(tidyverse)\n\nbirth &lt;- read.csv(\"data/ncbirths.csv\")\n\n\n3.2 Create a Contingency Table\n\n(8 pts) Create a contingency table of habit and lowbirthweight. Use table() to create a contingency table with habit as rows and lowbirthweight as columns. Save it as birth_table.\n(8 pts) Use addmargins() to add the sum row and sum column. Save it as birth_table_withsum.\n(4 pts) Print birth_table_withsum.\n\nbirth_table &lt;- table(birth$habit,\n                     birth$lowbirthweight)\n\nbirth_table_withsum &lt;- addmargins(birth_table)\nprint(birth_table_withsum)\n\n\n           \n            low not low Sum\n  nonsmoker  92     781 873\n  smoker     18     108 126\n  Sum       110     889 999",
     "crumbs": [
       "Quizzes",
-      "R Programming Challenge Answer"
+      "R Programming Challenge 1 Answer"
     ]
   },
   {
     "objectID": "quiz/quiz01_answer.html#chou-kaguya-hime-超時空輝耀姬-30-pts",
     "href": "quiz/quiz01_answer.html#chou-kaguya-hime-超時空輝耀姬-30-pts",
-    "title": "R Programming Challenge Answer",
+    "title": "R Programming Challenge 1 Answer",
     "section": "4 Chou Kaguya-hime! (超時空輝耀姬！) (30 pts)",
     "text": "4 Chou Kaguya-hime! (超時空輝耀姬！) (30 pts)\nKaguya is a new liver in Tsukuyomi. Her roommate, Iroha, also serves as her manager. To improve Kaguya’s streaming performance, Iroha records data from each stream, including:\n\ndate: The date of the stream.\ncontent: The type of content Kaguya did during the stream.\npaired_with_iroha: Sometimes Iroha joins Kaguya’s stream. If Iroha appeared in the stream on that date, record Yes; otherwise, record No.\nhours: The duration of the stream (in hours).\ndonation: The total amount of donations Kaguya received.\n\nTsukuyomi takes 30% of the donations as a commission. Iroha wants to know which type of content has the highest earnings per hour when Kaguya streams alone.\nFollow the instructions below to help Iroha find the answer:\n\n(3 pts) Import the package tidyverse.\n(3 pts) Download the dataset kaguya.csv (right click here) and save it in the data folder. Read kaguya.csv and save it as kaguya_raw.\n(3 pts) Without modifying kaguya_raw, create a new dataframe called kaguya_solo by filtering the data to keep only the streams where Kaguya streamed alone (i.e., not paired with Iroha).\n(3 pts) Add a new column earning to kaguya_solo, defined as 70% of donation.\n(3 pts) Add a new column earning_per_hour to kaguya_solo, calculated as earning / hours.\n(3 pts) Keep only the columns date, content, earning_per_hour in kaguya_solo.\n(3 pts) Arrange the rows of kaguya_solo in descending order of earning_per_hour.\n(4 pts) Print kaguya_solo. Which date’s stream has the highest earnings per hour?\n(5 pts) Create a new dataframe kaguya_solo_sum that summarizes the average earning_per_hour for each content category, and arranges it in descending order of average earning_per_hour. Which type of content has the highest average earnings per hour?\n\nlibrary(tidyverse)\n\nkaguya_raw &lt;- read.csv(\"data/kaguya.csv\")\n\nkaguya_solo &lt;- kaguya_raw %&gt;% \n  filter(paired_with_iroha == \"No\") %&gt;%\n  mutate(earning = donation * 0.7) %&gt;% \n  mutate(earning_per_hour = earning / hours) %&gt;%\n  select(date, content, earning_per_hour) %&gt;%\n  arrange(desc(earning_per_hour))\n\nprint(kaguya_solo[1:5, ])\n\nkaguya_solo_sum &lt;- kaguya_solo %&gt;% \n  group_by(content) %&gt;%\n  summarise(avg_earning_per_hour = mean(earning_per_hour)) %&gt;%\n  arrange(desc(avg_earning_per_hour))\n\nprint(kaguya_solo_sum)\n\n\n        date content earning_per_hour\n1 2050-05-19 Singing         94500.00\n2 2050-03-10 Dancing         87640.00\n3 2050-03-31  Gaming         75425.00\n4 2050-04-14  Gaming         72753.33\n5 2050-05-25  Gaming         71680.00\n\n\n# A tibble: 4 × 2\n  content avg_earning_per_hour\n  &lt;chr&gt;                  &lt;dbl&gt;\n1 Dancing               51129.\n2 Gaming                47637.\n3 Singing               47428.\n4 Chat                  37275.",
     "crumbs": [
       "Quizzes",
-      "R Programming Challenge Answer"
+      "R Programming Challenge 1 Answer"
     ]
   },
   {
@@ -584,56 +584,56 @@
   {
     "objectID": "quiz/quiz01.html",
     "href": "quiz/quiz01.html",
-    "title": "R Programming Challenge",
+    "title": "R Programming Challenge 1",
     "section": "",
     "text": "(5 pts) Import the package tidyverse.\n(5 pts) Download the dataset loans_full_schema.csv (right click here) and save it in the data folder. Read loans_full_schema.csv and save it as loan.\n\n\n\n\n\n(8 pts) Create a scatter plot of loan_amount and installment. Set the point color to steelblue and the point size to 0.5.\n(4 pts) Set the x-axis limits from 0 to 40000, with breaks at 0, 10000, 20000, 30000, and 40000.\n(4 pts) Set the y-axis limits from 0 to 1600, with breaks at 0, 400, 800, 1200, and 1600.\n(4 pts) Print the graph.",
     "crumbs": [
       "Quizzes",
-      "R Programming Challenge"
+      "R Programming Challenge 1"
     ]
   },
   {
     "objectID": "quiz/quiz01.html#loan-installment-scatter-plot-30-pts",
     "href": "quiz/quiz01.html#loan-installment-scatter-plot-30-pts",
-    "title": "R Programming Challenge",
+    "title": "R Programming Challenge 1",
     "section": "",
     "text": "(5 pts) Import the package tidyverse.\n(5 pts) Download the dataset loans_full_schema.csv (right click here) and save it in the data folder. Read loans_full_schema.csv and save it as loan.\n\n\n\n\n\n(8 pts) Create a scatter plot of loan_amount and installment. Set the point color to steelblue and the point size to 0.5.\n(4 pts) Set the x-axis limits from 0 to 40000, with breaks at 0, 10000, 20000, 30000, and 40000.\n(4 pts) Set the y-axis limits from 0 to 1600, with breaks at 0, 400, 800, 1200, and 1600.\n(4 pts) Print the graph.",
     "crumbs": [
       "Quizzes",
-      "R Programming Challenge"
+      "R Programming Challenge 1"
     ]
   },
   {
     "objectID": "quiz/quiz01.html#ames-housing-box-plot-30-pts",
     "href": "quiz/quiz01.html#ames-housing-box-plot-30-pts",
-    "title": "R Programming Challenge",
+    "title": "R Programming Challenge 1",
     "section": "2 Ames Housing Box Plot (30 pts)",
     "text": "2 Ames Housing Box Plot (30 pts)\n\n2.1 Setup\n\n(5 pts) Import the package tidyverse.\n(5 pts) Download the dataset ames.csv (right click here) and save it in the data folder. Read ames.csv and save it as housing.\n\n\n\n2.2 Create a box plot\n\n(8 pts) Create a box plot of price by Central.Air. Set width = 0.4 in geom_boxplot().\n(8 pts) Add graph title and axis labels:\n\nTitle: House Price by Central Air\nx-axis: Central Air\ny-axis: House Price\n\n(4 pts) Print the graph.",
     "crumbs": [
       "Quizzes",
-      "R Programming Challenge"
+      "R Programming Challenge 1"
     ]
   },
   {
     "objectID": "quiz/quiz01.html#nc-births-contingency-table-30-pts",
     "href": "quiz/quiz01.html#nc-births-contingency-table-30-pts",
-    "title": "R Programming Challenge",
+    "title": "R Programming Challenge 1",
     "section": "3 NC Births Contingency Table (30 pts)",
     "text": "3 NC Births Contingency Table (30 pts)\n\n3.1 Setup\n\n(5 pts) Import the package tidyverse.\n(5 pts) Download the dataset ncbirths.csv (right click here) and save it in the data folder. Read ncbirths.csv and save it as birth.\n\n\n\n3.2 Create a Contingency Table\n\n(8 pts) Create a contingency table of habit and lowbirthweight. Use table() to create a contingency table with habit as rows and lowbirthweight as columns. Save it as birth_table.\n(8 pts) Use addmargins() to add the sum row and sum column. Save it as birth_table_withsum.\n(4 pts) Print birth_table_withsum.",
     "crumbs": [
       "Quizzes",
-      "R Programming Challenge"
+      "R Programming Challenge 1"
     ]
   },
   {
     "objectID": "quiz/quiz01.html#chou-kaguya-hime-超時空輝耀姬-30-pts",
     "href": "quiz/quiz01.html#chou-kaguya-hime-超時空輝耀姬-30-pts",
-    "title": "R Programming Challenge",
+    "title": "R Programming Challenge 1",
     "section": "4 Chou Kaguya-hime! (超時空輝耀姬！) (30 pts)",
     "text": "4 Chou Kaguya-hime! (超時空輝耀姬！) (30 pts)\nKaguya is a new liver in Tsukuyomi. Her roommate, Iroha, also serves as her manager. To improve Kaguya’s streaming performance, Iroha records data from each stream, including:\n\ndate: The date of the stream.\ncontent: The type of content Kaguya did during the stream.\npaired_with_iroha: Sometimes Iroha joins Kaguya’s stream. If Iroha appeared in the stream on that date, record Yes; otherwise, record No.\nhours: The duration of the stream (in hours).\ndonation: The total amount of donations Kaguya received.\n\nTsukuyomi takes 30% of the donations as a commission. Iroha wants to know which type of content has the highest earnings per hour when Kaguya streams alone.\nFollow the instructions below to help Iroha find the answer:\n\n(3 pts) Import the package tidyverse.\n(3 pts) Download the dataset kaguya.csv (right click here) and save it in the data folder. Read kaguya.csv and save it as kaguya_raw.\n(3 pts) Without modifying kaguya_raw, create a new dataframe called kaguya_solo by filtering the data to keep only the streams where Kaguya streamed alone (i.e., not paired with Iroha).\n(3 pts) Add a new column earning to kaguya_solo, defined as 70% of donation.\n(3 pts) Add a new column earning_per_hour to kaguya_solo, calculated as earning / hours.\n(3 pts) Keep only the columns date, content, earning_per_hour in kaguya_solo.\n(3 pts) Arrange the rows of kaguya_solo in descending order of earning_per_hour.\n(4 pts) Print kaguya_solo. Which date’s stream has the highest earnings per hour?\n(5 pts) Create a new dataframe kaguya_solo_sum that summarizes the average earning_per_hour for each content category, and arranges it in descending order of average earning_per_hour. Which type of content has the highest average earnings per hour?",
     "crumbs": [
       "Quizzes",
-      "R Programming Challenge"
+      "R Programming Challenge 1"
     ]
   }
 ]
