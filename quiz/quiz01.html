@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 3 Slides (0717) – 2026 基礎數量方法 TA Session</title>
+<title>R Programming Challenge – 2026 基礎數量方法 TA Session</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,8 +25,8 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<link href="../example_code/Example_Code_wk01.html" rel="next">
-<link href="../slides/Slides_wk02.html" rel="prev">
+<link href="../quiz/quiz01_answer.html" rel="next">
+<link href="../answers/wk03_answer.html" rel="prev">
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -69,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../slides/Slides_wk01.html">Slides</a></li><li class="breadcrumb-item"><a href="../slides/Slides_wk03.html">Week 3 Slides (0717)</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../quiz/quiz01.html">Quizzes</a></li><li class="breadcrumb-item"><a href="../quiz/quiz01.html">R Programming Challenge</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -93,13 +93,13 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Slides</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../slides/Slides_wk01.html" class="sidebar-item-text sidebar-link">
@@ -114,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../slides/Slides_wk03.html" class="sidebar-item-text sidebar-link active">
+  <a href="../slides/Slides_wk03.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 3 Slides (0717)</span></a>
   </div>
 </li>
@@ -226,16 +226,16 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Quizzes</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../quiz/quiz01.html" class="sidebar-item-text sidebar-link">
+  <a href="../quiz/quiz01.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">R Programming Challenge</span></a>
   </div>
 </li>
@@ -249,7 +249,28 @@ ul.task-list li input[type="checkbox"] {
   </li>
     </ul>
     </div>
-    
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#loan-installment-scatter-plot-30-pts" id="toc-loan-installment-scatter-plot-30-pts" class="nav-link active" data-scroll-target="#loan-installment-scatter-plot-30-pts"><span class="header-section-number">1</span> Loan Installment Scatter Plot (30 pts)</a>
+  <ul class="collapse">
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">1.1</span> Setup</a></li>
+  <li><a href="#create-a-scatter-plot" id="toc-create-a-scatter-plot" class="nav-link" data-scroll-target="#create-a-scatter-plot"><span class="header-section-number">1.2</span> Create a scatter plot</a></li>
+  </ul></li>
+  <li><a href="#ames-housing-box-plot-30-pts" id="toc-ames-housing-box-plot-30-pts" class="nav-link" data-scroll-target="#ames-housing-box-plot-30-pts"><span class="header-section-number">2</span> Ames Housing Box Plot (30 pts)</a>
+  <ul class="collapse">
+  <li><a href="#setup-1" id="toc-setup-1" class="nav-link" data-scroll-target="#setup-1"><span class="header-section-number">2.1</span> Setup</a></li>
+  <li><a href="#create-a-box-plot" id="toc-create-a-box-plot" class="nav-link" data-scroll-target="#create-a-box-plot"><span class="header-section-number">2.2</span> Create a box plot</a></li>
+  </ul></li>
+  <li><a href="#nc-births-contingency-table-30-pts" id="toc-nc-births-contingency-table-30-pts" class="nav-link" data-scroll-target="#nc-births-contingency-table-30-pts"><span class="header-section-number">3</span> NC Births Contingency Table (30 pts)</a>
+  <ul class="collapse">
+  <li><a href="#setup-2" id="toc-setup-2" class="nav-link" data-scroll-target="#setup-2"><span class="header-section-number">3.1</span> Setup</a></li>
+  <li><a href="#create-a-contingency-table" id="toc-create-a-contingency-table" class="nav-link" data-scroll-target="#create-a-contingency-table"><span class="header-section-number">3.2</span> Create a Contingency Table</a></li>
+  </ul></li>
+  <li><a href="#chou-kaguya-hime-超時空輝耀姬-30-pts" id="toc-chou-kaguya-hime-超時空輝耀姬-30-pts" class="nav-link" data-scroll-target="#chou-kaguya-hime-超時空輝耀姬-30-pts"><span class="header-section-number">4</span> Chou Kaguya-hime! (超時空輝耀姬！) (30 pts)</a></li>
+  </ul>
+</nav>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -258,9 +279,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../slides/Slides_wk01.html">Slides</a></li><li class="breadcrumb-item"><a href="../slides/Slides_wk03.html">Week 3 Slides (0717)</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../quiz/quiz01.html">Quizzes</a></li><li class="breadcrumb-item"><a href="../quiz/quiz01.html">R Programming Challenge</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Week 3 Slides (0717)</h1>
+<h1 class="title">R Programming Challenge</h1>
 </div>
 
 
@@ -277,11 +298,92 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<iframe src="Slides_wk03.pdf" width="100%" height="800" style="border:1px solid #ddd;">
-</iframe>
-<p><a href="Slides_wk03.pdf" target="_blank" rel="noopener">Open in new tab</a> · <a href="Slides_wk03.pdf">Download PDF</a></p>
+<section id="loan-installment-scatter-plot-30-pts" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="loan-installment-scatter-plot-30-pts"><span class="header-section-number">1</span> Loan Installment Scatter Plot (30 pts)</h2>
+<section id="setup" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="setup"><span class="header-section-number">1.1</span> Setup</h3>
+<ol type="1">
+<li><p>(5 pts) Import the package <code>tidyverse</code>.</p></li>
+<li><p>(5 pts) Download the dataset <code>loans_full_schema.csv</code> <a href="../data/loans_full_schema.csv" target="_blank" rel="noopener">(right click here)</a> and save it in the <code>data</code> folder. Read <code>loans_full_schema.csv</code> and save it as <code>loan</code>.</p></li>
+</ol>
+</section>
+<section id="create-a-scatter-plot" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="create-a-scatter-plot"><span class="header-section-number">1.2</span> Create a scatter plot</h3>
+<ol type="1">
+<li><p>(8 pts) Create a scatter plot of <code>loan_amount</code> and <code>installment</code>. Set the point color to <code>steelblue</code> and the point size to <code>0.5</code>.</p></li>
+<li><p>(4 pts) Set the x-axis limits from <code>0</code> to <code>40000</code>, with breaks at <code>0</code>, <code>10000</code>, <code>20000</code>, <code>30000</code>, and <code>40000</code>.</p></li>
+<li><p>(4 pts) Set the y-axis limits from <code>0</code> to <code>1600</code>, with breaks at <code>0</code>, <code>400</code>, <code>800</code>, <code>1200</code>, and <code>1600</code>.</p></li>
+<li><p>(4 pts) Print the graph.</p></li>
+</ol>
+</section>
+</section>
+<section id="ames-housing-box-plot-30-pts" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="ames-housing-box-plot-30-pts"><span class="header-section-number">2</span> Ames Housing Box Plot (30 pts)</h2>
+<section id="setup-1" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="setup-1"><span class="header-section-number">2.1</span> Setup</h3>
+<ol type="1">
+<li><p>(5 pts) Import the package <code>tidyverse</code>.</p></li>
+<li><p>(5 pts) Download the dataset <code>ames.csv</code> <a href="../data/ames.csv" target="_blank" rel="noopener">(right click here)</a> and save it in the <code>data</code> folder. Read <code>ames.csv</code> and save it as <code>housing</code>.</p></li>
+</ol>
+</section>
+<section id="create-a-box-plot" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="create-a-box-plot"><span class="header-section-number">2.2</span> Create a box plot</h3>
+<ol type="1">
+<li><p>(8 pts) Create a box plot of <code>price</code> by <code>Central.Air</code>. Set <code>width = 0.4</code> in <code>geom_boxplot()</code>.</p></li>
+<li><p>(8 pts) Add graph title and axis labels:</p>
+<ul>
+<li><strong>Title:</strong> <code>House Price by Central Air</code></li>
+<li><strong>x-axis:</strong> <code>Central Air</code></li>
+<li><strong>y-axis:</strong> <code>House Price</code></li>
+</ul></li>
+<li><p>(4 pts) Print the graph.</p></li>
+</ol>
+</section>
+</section>
+<section id="nc-births-contingency-table-30-pts" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="nc-births-contingency-table-30-pts"><span class="header-section-number">3</span> NC Births Contingency Table (30 pts)</h2>
+<section id="setup-2" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="setup-2"><span class="header-section-number">3.1</span> Setup</h3>
+<ol type="1">
+<li><p>(5 pts) Import the package <code>tidyverse</code>.</p></li>
+<li><p>(5 pts) Download the dataset <code>ncbirths.csv</code> <a href="../data/ncbirths.csv" target="_blank" rel="noopener">(right click here)</a> and save it in the <code>data</code> folder. Read <code>ncbirths.csv</code> and save it as <code>birth</code>.</p></li>
+</ol>
+</section>
+<section id="create-a-contingency-table" class="level3" data-number="3.2">
+<h3 data-number="3.2" class="anchored" data-anchor-id="create-a-contingency-table"><span class="header-section-number">3.2</span> Create a Contingency Table</h3>
+<ol type="1">
+<li><p>(8 pts) Create a contingency table of <code>habit</code> and <code>lowbirthweight</code>. Use <code>table()</code> to create a contingency table with <code>habit</code> as rows and <code>lowbirthweight</code> as columns. Save it as <code>birth_table</code>.</p></li>
+<li><p>(8 pts) Use <code>addmargins()</code> to add the sum row and sum column. Save it as <code>birth_table_withsum</code>.</p></li>
+<li><p>(4 pts) Print <code>birth_table_withsum</code>.</p></li>
+</ol>
+</section>
+</section>
+<section id="chou-kaguya-hime-超時空輝耀姬-30-pts" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="chou-kaguya-hime-超時空輝耀姬-30-pts"><span class="header-section-number">4</span> Chou Kaguya-hime! (超時空輝耀姬！) (30 pts)</h2>
+<p>Kaguya is a new liver in Tsukuyomi. Her roommate, Iroha, also serves as her manager. To improve Kaguya’s streaming performance, Iroha records data from each stream, including:</p>
+<ul>
+<li><code>date</code>: The date of the stream.</li>
+<li><code>content</code>: The type of content Kaguya did during the stream.</li>
+<li><code>paired_with_iroha</code>: Sometimes Iroha joins Kaguya’s stream. If Iroha appeared in the stream on that date, record <code>Yes</code>; otherwise, record <code>No</code>.</li>
+<li><code>hours</code>: The duration of the stream (in hours).</li>
+<li><code>donation</code>: The total amount of donations Kaguya received.</li>
+</ul>
+<p>Tsukuyomi takes 30% of the donations as a commission. Iroha wants to know which type of content has the highest earnings per hour when Kaguya streams alone.</p>
+<p>Follow the instructions below to help Iroha find the answer:</p>
+<ol type="1">
+<li><p>(3 pts) Import the package <code>tidyverse</code>.</p></li>
+<li><p>(3 pts) Download the dataset <code>kaguya.csv</code> <a href="../data/kaguya.csv" target="_blank" rel="noopener">(right click here)</a> and save it in the <code>data</code> folder. Read <code>kaguya.csv</code> and save it as <code>kaguya_raw</code>.</p></li>
+<li><p>(3 pts) Without modifying <code>kaguya_raw</code>, create a new dataframe called <code>kaguya_solo</code> by filtering the data to keep only the streams where Kaguya streamed alone (i.e., not paired with Iroha).</p></li>
+<li><p>(3 pts) Add a new column <code>earning</code> to <code>kaguya_solo</code>, defined as 70% of <code>donation</code>.</p></li>
+<li><p>(3 pts) Add a new column <code>earning_per_hour</code> to <code>kaguya_solo</code>, calculated as <code>earning / hours</code>.</p></li>
+<li><p>(3 pts) Keep only the columns <code>date</code>, <code>content</code>, <code>earning_per_hour</code> in <code>kaguya_solo</code>.</p></li>
+<li><p>(3 pts) Arrange the rows of <code>kaguya_solo</code> in descending order of <code>earning_per_hour</code>.</p></li>
+<li><p>(4 pts) Print <code>kaguya_solo</code>. Which date’s stream has the highest earnings per hour?</p></li>
+<li><p>(5 pts) Create a new dataframe <code>kaguya_solo_sum</code> that summarizes the average <code>earning_per_hour</code> for each <code>content</code> category, and arranges it in descending order of average <code>earning_per_hour</code>. Which type of <code>content</code> has the highest average earnings per hour?</p></li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <!-- assets/bgm.html -->
@@ -913,13 +1015,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../slides/Slides_wk02.html" class="pagination-link" aria-label="Week 2 Slides (0710)">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 2 Slides (0710)</span>
+      <a href="../answers/wk03_answer.html" class="pagination-link" aria-label="Week 3 Answers (0717)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 3 Answers (0717)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../example_code/Example_Code_wk01.html" class="pagination-link" aria-label="Week 1 Example R Code (0703)">
-        <span class="nav-page-text">Week 1 Example R Code (0703)</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../quiz/quiz01_answer.html" class="pagination-link" aria-label="R Programming Challenge Answer">
+        <span class="nav-page-text">R Programming Challenge Answer</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
